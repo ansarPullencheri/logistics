@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - OneTrack Express</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -12,7 +13,7 @@
         }
 
         :root {
-            --color-primary: #fbbf24;
+            --color-primary: #8ac3d8;
             --color-text: #0f172a;
             --color-text-secondary: #64748b;
         }
@@ -36,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(138, 195, 216, 0.2);
         }
 
         .logo {
@@ -49,10 +50,13 @@
         }
 
         .logo-icon {
-            width: 35px;
-            height: 35px;
-            background: white;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 5px;
+            margin-top: -20px;
+            margin-bottom: -20px;
         }
 
         .nav-links {
@@ -66,15 +70,17 @@
             color: white;
             text-decoration: none;
             font-size: 1rem;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #fbbf24;
+            color: var(--color-primary);
+            text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
         }
 
         .nav-links a.active {
-            color: #fbbf24;
+            color: var(--color-primary);
         }
 
         /* HERO SECTION */
@@ -112,7 +118,7 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(251, 191, 36, 0.2);
+            background: rgba(138, 195, 216, 0.2);
             color: var(--color-primary);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
@@ -121,6 +127,8 @@
             letter-spacing: 1px;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
+            border: 1px solid rgba(138, 195, 216, 0.3);
+            box-shadow: 0 4px 15px rgba(138, 195, 216, 0.2);
         }
 
         .hero-title {
@@ -128,6 +136,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero-description {
@@ -155,27 +164,36 @@
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 40px rgba(138, 195, 216, 0.2);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
         }
 
         .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(138, 195, 216, 0.35),
+                        0 8px 25px rgba(255, 140, 0, 0.12);
+            border-color: rgba(138, 195, 216, 0.3);
         }
 
         .info-icon {
             width: 80px;
             height: 80px;
-            background: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-primary) 0%, #9dd3e8 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
             margin: 0 auto 1.5rem;
-            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
+            box-shadow: 0 8px 25px rgba(138, 195, 216, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover .info-icon {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(138, 195, 216, 0.5);
         }
 
         .info-card h3 {
@@ -196,11 +214,13 @@
             color: var(--color-primary);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .info-card a:hover {
-            color: #f59e0b;
+            color: #6bb3c8;
+            transform: translateX(5px);
         }
 
         /* CONTACT FORM SECTION */
@@ -243,12 +263,17 @@
             display: flex;
             align-items: flex-start;
             gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateX(5px);
         }
 
         .detail-icon {
             width: 50px;
             height: 50px;
-            background: rgba(251, 191, 36, 0.1);
+            background: rgba(138, 195, 216, 0.15);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -256,6 +281,13 @@
             font-size: 1.5rem;
             flex-shrink: 0;
             color: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover .detail-icon {
+            background: var(--color-primary);
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(138, 195, 216, 0.4);
         }
 
         .detail-content h4 {
@@ -280,20 +312,23 @@
         .social-icon {
             width: 50px;
             height: 50px;
-            background: rgba(251, 191, 36, 0.1);
+            background: rgba(138, 195, 216, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.3rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            border: 2px solid transparent;
         }
 
         .social-icon:hover {
             background: var(--color-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(138, 195, 216, 0.4),
+                        0 4px 12px rgba(255, 140, 0, 0.1);
+            border-color: rgba(138, 195, 216, 0.3);
         }
 
         /* FORM STYLING */
@@ -301,7 +336,14 @@
             background: white;
             padding: 3rem;
             border-radius: 20px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 30px rgba(138, 195, 216, 0.15);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form:hover {
+            box-shadow: 0 8px 40px rgba(138, 195, 216, 0.25);
+            border-color: rgba(138, 195, 216, 0.1);
         }
 
         .form-header {
@@ -355,7 +397,8 @@
             outline: none;
             border-color: var(--color-primary);
             background: white;
-            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+            box-shadow: 0 0 0 4px rgba(138, 195, 216, 0.15),
+                        0 4px 12px rgba(138, 195, 216, 0.2);
         }
 
         .form-group textarea {
@@ -380,6 +423,7 @@
             width: 20px;
             height: 20px;
             cursor: pointer;
+            accent-color: var(--color-primary);
         }
 
         .checkbox-group label {
@@ -393,19 +437,21 @@
             background: var(--color-primary);
             color: var(--color-text);
             padding: 1.2rem 2rem;
-            border: none;
+            border: 2px solid transparent;
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(138, 195, 216, 0.35);
         }
 
         .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
-            background: #fcd34d;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(138, 195, 216, 0.5),
+                        0 5px 20px rgba(255, 140, 0, 0.15);
+            background: #9dd3e8;
+            border-color: rgba(138, 195, 216, 0.3);
         }
 
         .submit-btn:active {
@@ -441,19 +487,14 @@
             height: 500px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(138, 195, 216, 0.2);
+            border: 3px solid rgba(138, 195, 216, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
+        .map-container:hover {
+            box-shadow: 0 15px 50px rgba(138, 195, 216, 0.3);
+            border-color: rgba(138, 195, 216, 0.2);
         }
 
         /* FAQ SECTION */
@@ -471,13 +512,15 @@
             background: white;
             border-radius: 15px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(138, 195, 216, 0.1);
             overflow: hidden;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .faq-item:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(138, 195, 216, 0.2);
+            border-color: rgba(138, 195, 216, 0.15);
         }
 
         .faq-question {
@@ -510,6 +553,11 @@
             transform: rotate(45deg);
         }
 
+        .faq-item.active {
+            box-shadow: 0 8px 30px rgba(138, 195, 216, 0.25);
+            border-color: rgba(138, 195, 216, 0.2);
+        }
+
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -528,7 +576,7 @@
             line-height: 1.7;
         }
 
-        /* FOOTER */
+        /* FOOTER - MATCHING MAIN PAGE */
         footer {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -540,17 +588,141 @@
             margin: 0 auto;
         }
 
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-about {
+            padding-right: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .footer-logo-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--color-primary);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(138, 195, 216, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .footer-social-icon:hover {
+            background: var(--color-primary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(138, 195, 216, 0.4),
+                        0 4px 12px rgba(255, 140, 0, 0.1);
+            border-color: rgba(138, 195, 216, 0.3);
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+            transform: translateX(5px);
+            text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-contact-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
         .footer-bottom {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-copyright {
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--color-primary);
+            text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
         }
 
         /* MOBILE RESPONSIVE */
@@ -564,8 +736,10 @@
             }
 
             .logo-icon {
-                width: 28px;
-                height: 28px;
+                width: 40px;
+                height: 40px;
+                margin-top: -10px;
+                margin-bottom: -10px;
             }
 
             .nav-links {
@@ -656,6 +830,26 @@
             footer {
                 padding: 3rem 1.5rem 1.5rem;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-about {
+                padding-right: 0;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -670,19 +864,29 @@
             .form-info {
                 position: static;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-about {
+                grid-column: 1 / -1;
+                padding-right: 0;
+            }
         }
     </style>
 </head>
 <body>
     <!-- NAVIGATION -->
     <nav>
-        <div class="logo">
-            <div class="logo-icon"></div>
+         <a href="index.html" style="text-decoration: none;"><div class="logo">
+            <img src="LOGO-ONNLY (1).png" alt="Axis Arabia Logistics" class="logo-icon" />
             <div>
-                <div>OneTrack</div>
-                <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+                <div>AXIS ARABIA</div>
+                <div style="font-size: 0.8rem; font-weight: normal">Logistics</div>
             </div>
-        </div>
+        </div></a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -694,7 +898,7 @@
     <!-- HERO SECTION -->
     <section class="contact-hero">
         <div class="hero-content">
-            <span class="hero-badge">Get In Touch</span>
+          
             <h1 class="hero-title">Contact Us</h1>
             <p class="hero-description">
                 Have questions? We're here to help. Reach out to our team and we'll get back to you within 24 hours.
@@ -759,10 +963,10 @@
             </div>
 
             <div class="social-links">
-                <div class="social-icon">📘</div>
-                <div class="social-icon">🐦</div>
-                <div class="social-icon">📷</div>
-                <div class="social-icon">💼</div>
+                <i class="fa-brands fa-facebook" style="color: black; font-size: 24px; margin: 8px;"></i>
+                <i class="fa-brands fa-instagram" style="color: black; font-size: 24px; margin: 8px;"></i>
+                <i class="fa-brands fa-whatsapp" style="color: black; font-size: 24px; margin: 8px;"></i>
+                <i class="fa-brands fa-x-twitter" style="color: black; font-size: 24px; margin: 8px;"></i>
             </div>
         </div>
 
@@ -834,9 +1038,9 @@
             <h2>Find Us on the Map</h2>
             <p>Visit our headquarters in Mumbai</p>
         </div>
-       <div class="map-container">
-   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.5953233076075!2d76.07387667355636!3d11.06893635373319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba64b61a23f2511%3A0x35ef66d367dfa103!2sChatjy!5e0!3m2!1sen!2sin!4v1762596740585!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.5953233076075!2d76.07387667355636!3d11.06893635373319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba64b61a23f2511%3A0x35ef66d367dfa103!2sChatjy!5e0!3m2!1sen!2sin!4v1762596740585!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </section>
 
     <!-- FAQ SECTION -->
@@ -849,41 +1053,41 @@
 
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How do I track my shipment?</span>
+                    <span>What services does Axis Arabia Logistics offer?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>You can track your shipment using the tracking number provided in your confirmation email. Simply enter the tracking number on our homepage or contact our customer support team for assistance.</p>
+                    <p>Axis Arabia Logistics provides a full range of logistics solutions including freight forwarding, transportation, warehousing, customs clearance, and supply chain management.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What are your delivery times?</span>
+                    <span>Where is Axis Arabia Logistics located?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>Standard delivery takes 5-7 business days, express delivery takes 2-3 business days, and same-day delivery is available in select cities. Exact delivery times depend on your location and service type.</p>
+                    <p>We are based in Saudi Arabia, serving clients across the GCC region and worldwide through our strong global network.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Do you offer international shipping?</span>
+                    <span>Do you handle international shipments?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>Yes, we offer international shipping to over 23 countries. We handle all customs documentation and provide door-to-door delivery. Contact us for specific country availability and pricing.</p>
+                    <p>Yes. We specialize in both import and export operations, offering reliable air, sea, and land freight forwarding services to ensure smooth global trade.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Is insurance included in the shipping cost?</span>
+                    <span>Can you handle large or bulk shipments?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>Basic insurance is included with all shipments. For high-value items, we offer additional insurance coverage. Please specify the value of your shipment when booking for appropriate coverage.</p>
+                    <p>Absolutely. Our logistics infrastructure and experienced team allow us to manage bulk, oversized, and project cargo efficiently and safely.</p>
                 </div>
             </div>
 
@@ -899,11 +1103,83 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - MATCHING MAIN PAGE -->
     <footer>
         <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon"></div>
+                        <div>
+                            <div>OneTrack</div>
+                            <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        OneTrack Express has been delivering excellence in logistics for over 27 years. We connect businesses worldwide with reliable, efficient, and innovative transportation solutions.
+                    </p>
+                    <div class="footer-social">
+                        <div class=""><i class="fa-brands fa-facebook" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+                        <div class=""><i class="fa-brands fa-instagram" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+                        <div class=""><i class="fa-brands fa-whatsapp" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+                        <div class=""><i class="fa-brands fa-x-twitter" style="color: white; font-size: 32px; margin: 8px;"></i></div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">contact</a></li>
+                        <li><a href="#">Get Quote</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Freight Transportation</a></li>
+                        <li><a href="#">Air Cargo</a></li>
+                        <li><a href="#">Ground Shipping</a></li>
+                        <li><a href="#">Warehousing</a></li>
+                        <li><a href="#">Supply Chain</a></li>
+                        <li><a href="#">Customs Clearance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot" style="color: white; font-size: 20px; margin-top: 8px; margin-left: 2px;"></i>
+                        <div class="footer-contact-text">
+                            123 Logistics Avenue<br />
+                            Mumbai, Maharashtra 400001
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-envelope" style="color: white; font-size: 18px; margin-right: 2px"></i>
+                        <div class="footer-contact-text">
+                            info@onetrack.com
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-phone" style="color: white; font-size: 18px; margin-right: 2px;"></i>
+                        <div class="footer-contact-text">
+                            +91 656 786 534
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 OneTrack Express. All rights reserved.</p>
+                <p class="footer-copyright">© 2025 ChatJY. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
             </div>
         </div>
     </footer>

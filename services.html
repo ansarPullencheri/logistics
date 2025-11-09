@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - OneTrack Express</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -12,7 +13,7 @@
         }
 
         :root {
-            --color-primary: #fbbf24;
+            --color-primary: #8ac3d8;
             --color-text: #0f172a;
             --color-text-secondary: #64748b;
         }
@@ -36,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(138, 195, 216, 0.2);
         }
 
         .logo {
@@ -49,10 +50,13 @@
         }
 
         .logo-icon {
-            width: 35px;
-            height: 35px;
-            background: white;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 5px;
+            margin-top: -20px;
+            margin-bottom: -20px;
         }
 
         .nav-links {
@@ -66,15 +70,17 @@
             color: white;
             text-decoration: none;
             font-size: 1rem;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #fbbf24;
+            color: var(--color-primary);
+            text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
         }
 
         .nav-links a.active {
-            color: #fbbf24;
+            color: var(--color-primary);
         }
 
         /* HERO SECTION */
@@ -112,7 +118,7 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(251, 191, 36, 0.2);
+            background: rgba(138, 195, 216, 0.2);
             color: var(--color-primary);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
@@ -121,6 +127,8 @@
             letter-spacing: 1px;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
+            border: 1px solid rgba(138, 195, 216, 0.3);
+            box-shadow: 0 4px 15px rgba(138, 195, 216, 0.2);
         }
 
         .hero-title {
@@ -128,6 +136,7 @@
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero-description {
@@ -153,16 +162,19 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(138, 195, 216, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 350px;
+            border: 2px solid transparent;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 45px rgba(138, 195, 216, 0.35),
+                        0 8px 25px rgba(255, 140, 0, 0.12);
+            border-color: rgba(138, 195, 216, 0.3);
         }
 
         .service-image {
@@ -178,7 +190,7 @@
         }
 
         .service-card:hover .service-image img {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .service-icon-overlay {
@@ -187,13 +199,19 @@
             left: 1.5rem;
             width: 60px;
             height: 60px;
-            background: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-primary) 0%, #9dd3e8 100%);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 8px 25px rgba(138, 195, 216, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon-overlay {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(138, 195, 216, 0.6);
         }
 
         .service-content {
@@ -236,6 +254,7 @@
             left: 0;
             color: var(--color-primary);
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .learn-more-btn {
@@ -247,7 +266,7 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             align-self: flex-start;
         }
 
@@ -255,6 +274,7 @@
             background: var(--color-primary);
             color: var(--color-text);
             transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(138, 195, 216, 0.4);
         }
 
         /* FEATURES SECTION */
@@ -298,25 +318,35 @@
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 195, 216, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(138, 195, 216, 0.3),
+                        0 5px 15px rgba(255, 140, 0, 0.1);
+            border-color: rgba(138, 195, 216, 0.2);
         }
 
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: rgba(251, 191, 36, 0.1);
+            background: linear-gradient(135deg, rgba(138, 195, 216, 0.15) 0%, rgba(138, 195, 216, 0.05) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #9dd3e8 100%);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(138, 195, 216, 0.4);
         }
 
         .feature-card h4 {
@@ -354,20 +384,26 @@
             left: 10%;
             right: 10%;
             height: 3px;
-            background: linear-gradient(to right, var(--color-primary), rgba(251, 191, 36, 0.3));
+            background: linear-gradient(to right, var(--color-primary) 0%, rgba(138, 195, 216, 0.3) 100%);
             z-index: 0;
+            box-shadow: 0 2px 10px rgba(138, 195, 216, 0.3);
         }
 
         .process-step {
             text-align: center;
             position: relative;
             z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
         }
 
         .step-number {
             width: 100px;
             height: 100px;
-            background: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-primary) 0%, #9dd3e8 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -376,8 +412,15 @@
             font-weight: 800;
             color: var(--color-text);
             margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            box-shadow: 0 10px 30px rgba(138, 195, 216, 0.35);
             border: 5px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(138, 195, 216, 0.5),
+                        0 5px 15px rgba(255, 140, 0, 0.15);
         }
 
         .process-step h4 {
@@ -393,133 +436,32 @@
             line-height: 1.6;
         }
 
-        /* PRICING SECTION */
-        .pricing-section {
-            background: #f8fafc;
-            padding: 6rem 3rem;
-        }
-
-        .pricing-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .pricing-card.featured {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background: var(--color-primary);
-            color: var(--color-text);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .pricing-card.featured h3 {
-            color: white;
-        }
-
-        .pricing-price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-period {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .pricing-card.featured .pricing-period {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-features li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .pricing-card.featured .pricing-features li {
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .pricing-btn {
-            width: 100%;
-            background: var(--color-primary);
-            color: var(--color-text);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.4);
-        }
-
-        .pricing-card.featured .pricing-btn {
-            background: white;
-            color: var(--color-text);
-        }
-
         /* CTA SECTION */
         .cta-section {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             padding: 6rem 3rem;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(138, 195, 216, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-content h2 {
@@ -538,6 +480,7 @@
             display: flex;
             gap: 1.5rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-button {
@@ -545,32 +488,36 @@
             color: var(--color-text);
             padding: 1rem 3rem;
             border-radius: 50px;
-            border: none;
+            border: 2px solid transparent;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(138, 195, 216, 0.4);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
-            background: #fcd34d;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(138, 195, 216, 0.5),
+                        0 5px 20px rgba(255, 140, 0, 0.15);
+            background: #9dd3e8;
+            border-color: rgba(138, 195, 216, 0.3);
         }
 
         .cta-button.secondary {
             background: transparent;
             border: 2px solid white;
             color: white;
+            box-shadow: none;
         }
 
         .cta-button.secondary:hover {
             background: white;
             color: var(--color-text);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
         }
 
-        /* FOOTER */
+        /* FOOTER - MATCHING MAIN PAGE */
         footer {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -582,17 +529,154 @@
             margin: 0 auto;
         }
 
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-about {
+            padding-right: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .footer-logo-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--color-primary);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(138, 195, 216, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(138, 195, 216, 0.4),
+                        0 4px 12px rgba(255, 140, 0, 0.1);
+            border-color: rgba(138, 195, 216, 0.3);
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+            transform: translateX(5px);
+            text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-contact-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(138, 195, 216, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            color: var(--color-primary);
+        }
+
+        .footer-contact-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
         .footer-bottom {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-copyright {
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--color-primary);
+            text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
         }
 
         /* MOBILE RESPONSIVE */
@@ -606,8 +690,10 @@
             }
 
             .logo-icon {
-                width: 28px;
-                height: 28px;
+                width: 40px;
+                height: 40px;
+                margin-top: -10px;
+                margin-bottom: -10px;
             }
 
             .nav-links {
@@ -682,19 +768,6 @@
                 display: none;
             }
 
-            .pricing-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-
             .cta-section {
                 padding: 3rem 1.5rem;
             }
@@ -719,6 +792,26 @@
             footer {
                 padding: 3rem 1.5rem 1.5rem;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-about {
+                padding-right: 0;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -738,14 +831,14 @@
                 display: none;
             }
 
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-                margin: 3rem auto 0;
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
             }
 
-            .pricing-card.featured {
-                transform: scale(1);
+            .footer-about {
+                grid-column: 1 / -1;
+                padding-right: 0;
             }
         }
     </style>
@@ -753,17 +846,17 @@
 <body>
     <!-- NAVIGATION -->
     <nav>
-        <div class="logo">
-            <div class="logo-icon"></div>
+        <a href="index.html" style="text-decoration: none;"><div class="logo">
+            <img src="LOGO-ONNLY (1).png" alt="Axis Arabia Logistics" class="logo-icon" />
             <div>
-                <div>OneTrack</div>
-                <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+                <div>AXIS ARABIA</div>
+                <div style="font-size: 0.8rem; font-weight: normal">Logistics</div>
             </div>
-        </div>
+        </div></a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -771,7 +864,7 @@
     <!-- HERO SECTION -->
     <section class="services-hero">
         <div class="hero-content">
-            <span class="hero-badge">Our Services</span>
+            
             <h1 class="hero-title">Comprehensive Logistics Solutions</h1>
             <p class="hero-description">
                 From freight transportation to warehousing, we offer end-to-end logistics services designed to meet your unique business needs
@@ -980,70 +1073,11 @@
         </div>
     </section>
 
-    <!-- PRICING SECTION -->
-    <section class="pricing-section">
-        <div class="pricing-container">
-            <div class="section-header">
-                <h2>Flexible Pricing Plans</h2>
-                <p>Choose the plan that best fits your shipping needs and budget</p>
-            </div>
-            <div class="pricing-grid">
-                <!-- Basic Plan -->
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="pricing-price">₹499</div>
-                    <p class="pricing-period">Per Shipment</p>
-                    <ul class="pricing-features">
-                        <li>Up to 50 kg</li>
-                        <li>Standard Delivery (5-7 days)</li>
-                        <li>Basic Tracking</li>
-                        <li>Email Support</li>
-                        <li>Standard Insurance</li>
-                    </ul>
-                    <button class="pricing-btn">Get Started</button>
-                </div>
-
-                <!-- Featured Plan -->
-                <div class="pricing-card featured">
-                    <span class="pricing-badge">Most Popular</span>
-                    <h3>Business</h3>
-                    <div class="pricing-price">₹2,499</div>
-                    <p class="pricing-period">Monthly Plan</p>
-                    <ul class="pricing-features">
-                        <li>Unlimited Shipments</li>
-                        <li>Express Delivery (2-3 days)</li>
-                        <li>Premium Tracking</li>
-                        <li>Priority Support 24/7</li>
-                        <li>Full Insurance Coverage</li>
-                        <li>Dedicated Account Manager</li>
-                    </ul>
-                    <button class="pricing-btn">Get Started</button>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="pricing-price">Custom</div>
-                    <p class="pricing-period">Tailored Solutions</p>
-                    <ul class="pricing-features">
-                        <li>Custom Volume Pricing</li>
-                        <li>Same-Day Delivery Options</li>
-                        <li>Advanced Analytics</li>
-                        <li>API Integration</li>
-                        <li>Premium Insurance</li>
-                        <li>Dedicated Support Team</li>
-                    </ul>
-                    <button class="pricing-btn">Contact Sales</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="cta-content">
             <h2>Ready to Get Started?</h2>
-            <p>Join thousands of businesses that trust OneTrack Express for their logistics needs. Experience the difference today.</p>
+            <p>Join thousands of businesses that trust axis arabia logistics for their logistics needs. Experience the difference today.</p>
             <div class="cta-buttons">
                 <button class="cta-button">Request a Quote</button>
                 <button class="cta-button secondary">Schedule a Demo</button>
@@ -1051,11 +1085,80 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - MATCHING MAIN PAGE -->
     <footer>
         <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon"></div>
+                        <div>
+                            <div>OneTrack</div>
+                            <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        OneTrack Express has been delivering excellence in logistics for over 27 years. We connect businesses worldwide with reliable, efficient, and innovative transportation solutions.
+                    </p>
+                    <div class="footer-social">
+                        <div class=""><i class="fa-brands fa-facebook" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+                        <div class=""><i class="fa-brands fa-instagram" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+                        <div class=""><i class="fa-brands fa-whatsapp" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+                        <div class=""><i class="fa-brands fa-x-twitter" style="color: white; font-size: 32px; margin: 8px;"></i></div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">contact</a></li>
+                        <li><a href="#">Get Quote</a></li>
+                        
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Freight Transportation</a></li>
+                        <li><a href="#">Air Cargo</a></li>
+                        <li><a href="#">Ground Shipping</a></li>
+                        <li><a href="#">Warehousing</a></li>
+                        <li><a href="#">Supply Chain</a></li>
+                        <li><a href="#">Customs Clearance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot" style="color: white; font-size: 20px; margin-top: 8px; margin-left: 2px;"></i>
+                        <div class="footer-contact-text">
+                            123 Logistics Avenue<br />
+                            Mumbai, Maharashtra 400001
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-envelope" style="color: white; font-size: 18px; margin-right: 2px"></i>
+                        <div class="footer-contact-text">
+                            info@onetrack.com
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-phone" style="color: white; font-size: 18px; margin-right: 2px;"></i>
+                        <div class="footer-contact-text">
+                            +91 656 786 534
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 OneTrack Express. All rights reserved.</p>
+                <p class="footer-copyright">© 2025 ChatJY. All rights reserved.</p>
+               
             </div>
         </div>
     </footer>

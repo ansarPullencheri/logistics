@@ -1,893 +1,1353 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - OneTrack Express</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            --color-primary: #fbbf24;
-            --color-text: #0f172a;
-            --color-text-secondary: #64748b;
-        }
+      :root {
+        --color-primary: #8ac3d8;
+        --color-text: #0f172a;
+        --color-text-secondary: #64748b;
+      }
 
-        body {
-            font-family: "Inter", "Poppins", sans-serif;
-            overflow-x: hidden;
-            background: white;
-        }
+      body {
+        font-family: "Inter", "Poppins", sans-serif;
+        overflow-x: hidden;
+        background: white;
+      }
 
-        /* NAVIGATION */
+      /* NAVIGATION */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(138, 195, 216, 0.2);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .logo-icon {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 50%;
+        padding: 5px;
+        margin-top: -20px;
+        margin-bottom: -20px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--color-primary);
+        text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
+      }
+
+      .nav-links a.active {
+        color: var(--color-primary);
+      }
+
+      /* HERO SECTION */
+      .about-hero {
+        position: relative;
+        height: 60vh;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        margin-top: 80px;
+        overflow: hidden;
+      }
+
+      .about-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop")
+          center/cover;
+        opacity: 0.15;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        max-width: 800px;
+        padding: 0 2rem;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(138, 195, 216, 0.2);
+        color: var(--color-primary);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        border: 1px solid rgba(138, 195, 216, 0.3);
+        box-shadow: 0 4px 15px rgba(138, 195, 216, 0.2);
+      }
+
+      .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-description {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* STORY SECTION */
+      .story-section {
+        max-width: 1400px;
+        margin: 6rem auto;
+        padding: 0 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .story-image {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(138, 195, 216, 0.25),
+          0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 3px solid rgba(138, 195, 216, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .story-image:hover {
+        box-shadow: 0 25px 70px rgba(138, 195, 216, 0.35),
+          0 12px 35px rgba(255, 140, 0, 0.1);
+        border-color: rgba(138, 195, 216, 0.3);
+        transform: translateY(-5px);
+      }
+
+      .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .story-image:hover img {
+        transform: scale(1.08);
+      }
+
+      .story-content h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--color-text);
+        margin-bottom: 1rem;
+      }
+
+      .story-content .subtitle {
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .story-content p {
+        font-size: 1.05rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      /* VALUES SECTION */
+      .values-section {
+        background: #f8fafc;
+        padding: 6rem 3rem;
+      }
+
+      .values-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-header h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--color-text);
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .value-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(138, 195, 216, 0.15);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+        border: 2px solid transparent;
+      }
+
+      .value-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 45px rgba(138, 195, 216, 0.35),
+          0 8px 25px rgba(255, 140, 0, 0.12);
+        border-color: rgba(138, 195, 216, 0.3);
+      }
+
+      .value-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          #9dd3e8 100%
+        );
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 8px 25px rgba(138, 195, 216, 0.35);
+        transition: all 0.3s ease;
+      }
+
+      .value-card:hover .value-icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 12px 35px rgba(138, 195, 216, 0.5);
+      }
+
+      .value-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 1rem;
+      }
+
+      .value-card p {
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+      }
+
+      /* TEAM SECTION */
+      .team-section {
+        max-width: 1400px;
+        margin: 6rem auto;
+        padding: 0 3rem;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .team-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(138, 195, 216, 0.15);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+      }
+
+      .team-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 45px rgba(138, 195, 216, 0.35),
+          0 8px 25px rgba(255, 140, 0, 0.12);
+        border-color: rgba(138, 195, 216, 0.2);
+      }
+
+      .team-image {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          #9dd3e8 100%
+        );
+      }
+
+      .team-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .team-card:hover .team-image img {
+        transform: scale(1.15);
+      }
+
+      .team-info {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .team-info h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 0.3rem;
+      }
+
+      .team-info p {
+        font-size: 0.95rem;
+        color: var(--color-text-secondary);
+      }
+
+      /* TIMELINE SECTION */
+      .timeline-section {
+        background: #f8fafc;
+        padding: 6rem 3rem;
+      }
+
+      .timeline-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(
+          180deg,
+          var(--color-primary) 0%,
+          rgba(138, 195, 216, 0.3) 100%
+        );
+        transform: translateX(-50%);
+        box-shadow: 0 0 20px rgba(138, 195, 216, 0.3);
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+        position: relative;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content {
+        order: 2;
+      }
+
+      .timeline-item:nth-child(even) .timeline-year {
+        order: 1;
+        text-align: left;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: 50%;
+        top: 2rem;
+        width: 24px;
+        height: 24px;
+        background: var(--color-primary);
+        border: 5px solid white;
+        border-radius: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 0 8px #f8fafc, 0 4px 15px rgba(138, 195, 216, 0.4);
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover .timeline-dot {
+        transform: translateX(-50%) scale(1.3);
+        box-shadow: 0 0 0 8px #f8fafc, 0 6px 25px rgba(138, 195, 216, 0.6);
+      }
+
+      .timeline-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(138, 195, 216, 0.15);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+      }
+
+      .timeline-content:hover {
+        box-shadow: 0 12px 35px rgba(138, 195, 216, 0.3),
+          0 5px 15px rgba(255, 140, 0, 0.1);
+        border-color: rgba(138, 195, 216, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .timeline-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content p {
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+      }
+
+      .timeline-year {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        opacity: 0.4;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover .timeline-year {
+        opacity: 0.7;
+        transform: scale(1.05);
+      }
+
+      /* CTA SECTION */
+      .cta-section {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        padding: 6rem 3rem;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(138, 195, 216, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .cta-content h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .cta-button {
+        background: var(--color-primary);
+        color: var(--color-text);
+        padding: 1rem 3rem;
+        border-radius: 50px;
+        border: 2px solid transparent;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(138, 195, 216, 0.4);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 15px 45px rgba(138, 195, 216, 0.5),
+          0 5px 20px rgba(255, 140, 0, 0.15);
+        background: #9dd3e8;
+        border-color: rgba(138, 195, 216, 0.3);
+      }
+
+      .cta-button:active {
+        transform: translateY(-1px);
+      }
+
+      /* FOOTER - MATCHING MAIN PAGE */
+      footer {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        padding: 4rem 3rem 2rem;
+        border-radius: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-about {
+        padding-right: 2rem;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .footer-logo-icon {
+        width: 35px;
+        height: 35px;
+        background: var(--color-primary);
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      }
+
+      .footer-description {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        background: rgba(138, 195, 216, 0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .social-icon:hover {
+        background: var(--color-primary);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(138, 195, 216, 0.4),
+          0 4px 12px rgba(255, 140, 0, 0.1);
+        border-color: rgba(138, 195, 216, 0.3);
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-links a:hover {
+        color: var(--color-primary);
+        transform: translateX(5px);
+        text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
+      }
+
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .footer-contact-icon {
+        width: 35px;
+        height: 35px;
+        background: rgba(251, 191, 36, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+        color: var(--color-primary);
+      }
+
+      .footer-contact-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+      }
+
+      .footer-copyright {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .footer-bottom-links a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .footer-bottom-links a:hover {
+        color: var(--color-primary);
+        text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
+      }
+
+      /* MOBILE RESPONSIVE */
+      @media (max-width: 768px) {
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          padding: 1rem 1.5rem;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
+          font-size: 1.2rem;
         }
 
         .logo-icon {
-            width: 35px;
-            height: 35px;
-            background: white;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          width: 40px;
+          height: 40px;
+          margin-top: -10px;
+          margin-bottom: -10px;
         }
 
         .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
+          display: none;
         }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fbbf24;
-        }
-
-        .nav-links a.active {
-            color: #fbbf24;
-        }
-
-        /* HERO SECTION */
         .about-hero {
-            position: relative;
-            height: 60vh;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            margin-top: 80px;
-            overflow: hidden;
-        }
-
-        .about-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop') center/cover;
-            opacity: 0.15;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(251, 191, 36, 0.2);
-            color: var(--color-primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+          height: 50vh;
+          min-height: 350px;
+          margin-top: 60px;
         }
 
         .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+          font-size: 2rem;
         }
 
         .hero-description {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
+          font-size: 1rem;
         }
 
-        /* STORY SECTION */
         .story-section {
-            max-width: 1400px;
-            margin: 6rem auto;
-            padding: 0 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          margin: 3rem auto;
+          padding: 0 1.5rem;
         }
 
         .story-image {
-            width: 100%;
-            height: 500px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+          height: 300px;
+          order: 1;
         }
 
-        .story-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .story-image:hover img {
-            transform: scale(1.05);
+        .story-content {
+          order: 2;
         }
 
         .story-content h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--color-text);
-            margin-bottom: 1rem;
-        }
-
-        .story-content .subtitle {
-            font-size: 1.2rem;
-            color: var(--color-primary);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+          font-size: 1.8rem;
         }
 
         .story-content p {
-            font-size: 1.05rem;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+          font-size: 1rem;
         }
 
-        /* VALUES SECTION */
         .values-section {
-            background: #f8fafc;
-            padding: 6rem 3rem;
-        }
-
-        .values-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+          padding: 3rem 1.5rem;
         }
 
         .section-header h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--color-text);
-            margin-bottom: 1rem;
+          font-size: 2rem;
         }
 
         .section-header p {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
+          font-size: 1rem;
         }
 
         .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
 
-        .value-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .value-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--color-primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
-        }
-
-        .value-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 1rem;
-        }
-
-        .value-card p {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.6;
-        }
-
-        /* TEAM SECTION */
         .team-section {
-            max-width: 1400px;
-            margin: 6rem auto;
-            padding: 0 3rem;
+          margin: 3rem auto;
+          padding: 0 1.5rem;
         }
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
         }
 
-        .team-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .team-image {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .team-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .team-card:hover .team-image img {
-            transform: scale(1.1);
-        }
-
-        .team-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .team-info h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 0.3rem;
-        }
-
-        .team-info p {
-            font-size: 0.95rem;
-            color: var(--color-text-secondary);
-        }
-
-        /* TIMELINE SECTION */
         .timeline-section {
-            background: #f8fafc;
-            padding: 6rem 3rem;
-        }
-
-        .timeline-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
+          padding: 3rem 1.5rem;
         }
 
         .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--color-primary);
-            transform: translateX(-50%);
+          left: 30px;
         }
 
         .timeline-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            position: relative;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          padding-left: 4rem;
         }
 
         .timeline-item:nth-child(even) .timeline-content {
-            order: 2;
+          order: 1;
         }
 
         .timeline-item:nth-child(even) .timeline-year {
-            order: 1;
-            text-align: left;
+          order: 2;
         }
 
         .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 2rem;
-            width: 20px;
-            height: 20px;
-            background: var(--color-primary);
-            border: 4px solid white;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 0 8px #f8fafc;
-            z-index: 2;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .timeline-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content p {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.6;
+          left: 30px;
         }
 
         .timeline-year {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            opacity: 0.3;
+          justify-content: flex-start;
+          font-size: 2rem;
         }
 
-        /* CTA SECTION */
         .cta-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 6rem 3rem;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
+          padding: 3rem 1.5rem;
         }
 
         .cta-content h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
+          font-size: 2rem;
         }
 
         .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
+          font-size: 1rem;
         }
 
-        .cta-button {
-            background: var(--color-primary);
-            color: var(--color-text);
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
-            background: #fcd34d;
-        }
-
-        /* FOOTER */
         footer {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 4rem 3rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
+          padding: 3rem 1.5rem 1.5rem;
+          margin: 0;
+          border-radius: 0;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+          margin-bottom: 2rem;
+          padding-bottom: 2rem;
         }
 
         .footer-about {
-            padding-right: 2rem;
+          padding-right: 0;
         }
 
         .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .footer-logo-icon {
-            width: 35px;
-            height: 35px;
-            background: var(--color-primary);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          font-size: 1.3rem;
         }
 
         .footer-description {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            font-size: 0.95rem;
+          font-size: 0.9rem;
+        }
+
+        .footer-social {
+          justify-content: flex-start;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 1.1rem;
+        }
+
+        .footer-section h3 {
+          font-size: 1.1rem;
+          margin-bottom: 1rem;
         }
 
         .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 2rem;
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+          padding-top: 1.5rem;
         }
 
-        .footer-copyright {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+        .footer-bottom-links {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 1024px) and (min-width: 769px) {
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
 
-        /* MOBILE RESPONSIVE */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .logo-icon {
-                width: 28px;
-                height: 28px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .about-hero {
-                height: 50vh;
-                min-height: 350px;
-                margin-top: 60px;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-            }
-
-            .story-section {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                margin: 3rem auto;
-                padding: 0 1.5rem;
-            }
-
-            .story-image {
-                height: 300px;
-                order: 1;
-            }
-
-            .story-content {
-                order: 2;
-            }
-
-            .story-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .story-content p {
-                font-size: 1rem;
-            }
-
-            .values-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .section-header p {
-                font-size: 1rem;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .team-section {
-                margin: 3rem auto;
-                padding: 0 1.5rem;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .timeline-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .timeline-line {
-                left: 30px;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding-left: 4rem;
-            }
-
-            .timeline-item:nth-child(even) .timeline-content {
-                order: 1;
-            }
-
-            .timeline-item:nth-child(even) .timeline-year {
-                order: 2;
-            }
-
-            .timeline-dot {
-                left: 30px;
-            }
-
-            .timeline-year {
-                justify-content: flex-start;
-                font-size: 2rem;
-            }
-
-            .cta-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .cta-content h2 {
-                font-size: 2rem;
-            }
-
-            .cta-content p {
-                font-size: 1rem;
-            }
-
-            footer {
-                padding: 3rem 1.5rem 1.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
 
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
         }
+
+        .footer-about {
+          grid-column: 1 / -1;
+          padding-right: 0;
+        }
+      }
+      /* Add this new CSS for footer logo specifically */
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .footer-logo-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 50%;
+        padding: 5px;
+      }
+
+      .footer-logo-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-logo-text .main-text {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .footer-logo-text .sub-text {
+        font-size: 0.75rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.8);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- NAVIGATION -->
     <nav>
-        <div class="logo">
-            <div class="logo-icon"></div>
-            <div>
-                <div>OneTrack</div>
-                <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
-            </div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <a href="index.html" style="text-decoration: none"
+        ><div class="logo">
+          <img
+            src="LOGO-ONNLY (1).png"
+            alt="Axis Arabia Logistics"
+            class="logo-icon"
+          />
+          <div>
+            <div>AXIS ARABIA</div>
+            <div style="font-size: 0.8rem; font-weight: normal">Logistics</div>
+          </div>
+        </div></a
+      >
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
 
     <!-- HERO SECTION -->
     <section class="about-hero">
-        <div class="hero-content">
-            <span class="hero-badge">About OneTrack Express</span>
-            <h1 class="hero-title">Our Story</h1>
-            <p class="hero-description">
-                Delivering excellence in logistics for over 27 years, connecting businesses worldwide with innovative transportation solutions
-            </p>
-        </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Our Story</h1>
+        <p class="hero-description">
+          Delivering excellence in logistics for over 27 years, connecting
+          businesses worldwide with innovative transportation solutions
+        </p>
+      </div>
     </section>
 
     <!-- STORY SECTION -->
     <section class="story-section">
-        <div class="story-image">
-            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=1000&fit=crop" alt="OneTrack Express">
-        </div>
-        <div class="story-content">
-            <h2>Who We Are</h2>
-            <p class="subtitle">Your Trusted Global Logistics Partner</p>
-            <p>
-                Founded in 1996, OneTrack Express has grown from a small regional carrier to a global logistics powerhouse. Our journey has been driven by an unwavering commitment to excellence, innovation, and customer satisfaction.
-            </p>
-            <p>
-                Today, we operate in over 23 countries with a team of 500+ logistics professionals, handling millions of shipments annually. Our state-of-the-art facilities and advanced tracking systems ensure your cargo arrives safely and on time, every time.
-            </p>
-            <p>
-                We don't just move packages—we build partnerships. Our success is measured by the trust our clients place in us and the long-term relationships we've cultivated across industries.
-            </p>
-        </div>
+      <div class="story-image">
+        <img
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=1000&fit=crop"
+          alt="OneTrack Express"
+        />
+      </div>
+      <div class="story-content">
+        <h2>Who We Are</h2>
+        <p class="subtitle">Your Trusted Global Logistics Partner</p>
+        <p>
+          Axis Arabia Logistics is a trusted logistics partner based in Saudi
+          Arabia, offering comprehensive freight forwarding, transportation,
+          warehousing, and supply chain management services.
+        </p>
+        <p>
+          With a strong foundation in freight forwarding, transportation,
+          warehousing, and end-to-end supply chain management, we deliver
+          tailored solutions that help companies streamline operations and
+          expand their global reach.
+        </p>
+        <p>
+          Our team combines worldwide connectivity with deep local market
+          expertise, ensuring every shipment — whether domestic or international
+          — is handled with precision, safety, and speed. From small
+          consignments to large-scale logistics projects, we focus on
+          efficiency, transparency, and cost-effectiveness at every step.
+        </p>
+      </div>
     </section>
 
     <!-- VALUES SECTION -->
     <section class="values-section">
-        <div class="values-container">
-            <div class="section-header">
-                <h2>Our Core Values</h2>
-                <p>The principles that guide everything we do and define who we are</p>
-            </div>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h3>Excellence</h3>
-                    <p>We strive for perfection in every shipment, ensuring the highest quality standards in logistics services.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h3>Reliability</h3>
-                    <p>Our clients trust us because we consistently deliver on our promises, on time, every time.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">💡</div>
-                    <h3>Innovation</h3>
-                    <p>We embrace cutting-edge technology to provide smarter, faster, and more efficient logistics solutions.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌍</div>
-                    <h3>Sustainability</h3>
-                    <p>Committed to reducing our environmental impact through eco-friendly practices and green logistics.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">👥</div>
-                    <h3>Teamwork</h3>
-                    <p>Our diverse team works collaboratively to achieve common goals and exceed client expectations.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">💼</div>
-                    <h3>Integrity</h3>
-                    <p>We conduct business with honesty and transparency, building lasting relationships based on trust.</p>
-                </div>
-            </div>
+      <div class="values-container">
+        <div class="section-header">
+          <h2>Our Core Values</h2>
+          <p>
+            The principles that guide everything we do and define who we are
+          </p>
         </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h3>Excellence</h3>
+            <p>
+              We strive for perfection in every shipment, ensuring the highest
+              quality standards in logistics services.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Reliability</h3>
+            <p>
+              Our clients trust us because we consistently deliver on our
+              promises, on time, every time.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💡</div>
+            <h3>Innovation</h3>
+            <p>
+              We embrace cutting-edge technology to provide smarter, faster, and
+              more efficient logistics solutions.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌍</div>
+            <h3>Sustainability</h3>
+            <p>
+              Committed to reducing our environmental impact through
+              eco-friendly practices and green logistics.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">👥</div>
+            <h3>Teamwork</h3>
+            <p>
+              Our diverse team works collaboratively to achieve common goals and
+              exceed client expectations.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💼</div>
+            <h3>Integrity</h3>
+            <p>
+              We conduct business with honesty and transparency, building
+              lasting relationships based on trust.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- TEAM SECTION -->
     <section class="team-section">
-        <div class="section-header">
-            <h2>Meet Our Leadership</h2>
-            <p>The experienced team driving OneTrack Express forward</p>
+      <div class="section-header">
+        <h2>Meet Our Leadership</h2>
+        <p>The experienced team driving OneTrack Express forward</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-image">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop"
+              alt="Team Member"
+            />
+          </div>
+          <div class="team-info">
+            <h3>Rajesh Kumar</h3>
+            <p>Chief Executive Officer</p>
+          </div>
         </div>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop" alt="Team Member">
-                </div>
-                <div class="team-info">
-                    <h3>Rajesh Kumar</h3>
-                    <p>Chief Executive Officer</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop" alt="Team Member">
-                </div>
-                <div class="team-info">
-                    <h3>Priya Sharma</h3>
-                    <p>Chief Operating Officer</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop" alt="Team Member">
-                </div>
-                <div class="team-info">
-                    <h3>Amit Patel</h3>
-                    <p>Chief Technology Officer</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-image">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=500&fit=crop" alt="Team Member">
-                </div>
-                <div class="team-info">
-                    <h3>Sneha Reddy</h3>
-                    <p>Chief Financial Officer</p>
-                </div>
-            </div>
+        <div class="team-card">
+          <div class="team-image">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop"
+              alt="Team Member"
+            />
+          </div>
+          <div class="team-info">
+            <h3>Priya Sharma</h3>
+            <p>Chief Operating Officer</p>
+          </div>
         </div>
+        <div class="team-card">
+          <div class="team-image">
+            <img
+              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop"
+              alt="Team Member"
+            />
+          </div>
+          <div class="team-info">
+            <h3>Amit Patel</h3>
+            <p>Chief Technology Officer</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-image">
+            <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=500&fit=crop"
+              alt="Team Member"
+            />
+          </div>
+          <div class="team-info">
+            <h3>Sneha Reddy</h3>
+            <p>Chief Financial Officer</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- TIMELINE SECTION -->
     <section class="timeline-section">
-        <div class="timeline-container">
-            <div class="section-header">
-                <h2>Our Journey</h2>
-                <p>Milestones that shaped OneTrack Express</p>
-            </div>
-            <div class="timeline-line"></div>
-            
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">1996</div>
-                <div class="timeline-content">
-                    <h3>The Beginning</h3>
-                    <p>OneTrack Express was founded with a single truck and a vision to revolutionize logistics in India.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">2005</div>
-                <div class="timeline-content">
-                    <h3>National Expansion</h3>
-                    <p>Expanded operations to cover all major cities across India with a fleet of 100+ vehicles.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">2012</div>
-                <div class="timeline-content">
-                    <h3>Going Global</h3>
-                    <p>Launched international shipping services, connecting India to markets across Asia and Middle East.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">2018</div>
-                <div class="timeline-content">
-                    <h3>Technology Integration</h3>
-                    <p>Implemented AI-powered tracking systems and automated warehouses for enhanced efficiency.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-year">2025</div>
-                <div class="timeline-content">
-                    <h3>Sustainable Future</h3>
-                    <p>Committed to carbon-neutral operations with electric vehicle fleet and green logistics initiatives.</p>
-                </div>
-            </div>
+      <div class="timeline-container">
+        <div class="section-header">
+          <h2>Our Journey</h2>
+          <p>Milestones that shaped OneTrack Express</p>
         </div>
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1996</div>
+          <div class="timeline-content">
+            <h3>The Beginning</h3>
+            <p>
+              OneTrack Express was founded with a single truck and a vision to
+              revolutionize logistics in India.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2005</div>
+          <div class="timeline-content">
+            <h3>National Expansion</h3>
+            <p>
+              Expanded operations to cover all major cities across India with a
+              fleet of 100+ vehicles.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2012</div>
+          <div class="timeline-content">
+            <h3>Going Global</h3>
+            <p>
+              Launched international shipping services, connecting India to
+              markets across Asia and Middle East.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2018</div>
+          <div class="timeline-content">
+            <h3>Technology Integration</h3>
+            <p>
+              Implemented AI-powered tracking systems and automated warehouses
+              for enhanced efficiency.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2025</div>
+          <div class="timeline-content">
+            <h3>Sustainable Future</h3>
+            <p>
+              Committed to carbon-neutral operations with electric vehicle fleet
+              and green logistics initiatives.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA SECTION -->
     <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Work With Us?</h2>
-            <p>Join thousands of businesses that trust OneTrack Express for their logistics needs. Let's build a partnership that delivers results.</p>
-            <button class="cta-button">Get Started Today</button>
-        </div>
+      <div class="cta-content">
+        <h2>Ready to Work With Us?</h2>
+        <p>
+          Join thousands of businesses that trust axis arabia logistics for
+          their logistics needs. Let's build a partnership that delivers
+          results.
+        </p>
+        <button class="cta-button">Get Started Today</button>
+      </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - MATCHING MAIN PAGE -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon"></div>
-                        <div>
-                            <div>OneTrack</div>
-                            <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
-                        </div>
-                    </div>
-                    <p class="footer-description">
-                        OneTrack Express has been delivering excellence in logistics for over 27 years. We connect businesses worldwide with reliable, efficient, and innovative transportation solutions.
-                    </p>
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <a href="index.html" style="text-decoration: none">
+              <div class="footer-logo">
+                <img
+                  src="LOGO-ONNLY (1).png"
+                  alt="Axis Arabia Logistics"
+                  class="footer-logo-img"
+                />
+                <div class="footer-logo-text">
+                  <div class="main-text">AXIS ARABIA</div>
+                  <div class="sub-text">Logistics</div>
                 </div>
+              </div>
+            </a>
+            <p class="footer-description">
+              Axis arabia logistics has been delivering excellence in logistics
+              for over 27 years. We connect businesses worldwide with reliable,
+              efficient, and innovative transportation solutions.
+            </p>
+            <div class="footer-social">
+              <div class="social-icon">
+                <i
+                  class="fa-brands fa-facebook"
+                  style="color: white; font-size: 35px; margin: 8px"
+                ></i>
+              </div>
+              <div class="social-icon">
+                <i
+                  class="fa-brands fa-instagram"
+                  style="color: white; font-size: 35px; margin: 8px"
+                ></i>
+              </div>
+              <div class="social-icon">
+                <i
+                  class="fa-brands fa-whatsapp"
+                  style="color: white; font-size: 35px; margin: 8px"
+                ></i>
+              </div>
+              <div class="social-icon">
+                <i
+                  class="fa-brands fa-x-twitter"
+                  style="color: white; font-size: 32px; margin: 8px"
+                ></i>
+              </div>
             </div>
-            <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 OneTrack Express. All rights reserved.</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">contact</a></li>
+              <li><a href="#">Get Quote</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="#">Freight Transportation</a></li>
+              <li><a href="#">Air Cargo</a></li>
+              <li><a href="#">Ground Shipping</a></li>
+              <li><a href="#">Warehousing</a></li>
+              <li><a href="#">Supply Chain</a></li>
+              <li><a href="#">Customs Clearance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <div class="footer-contact-item">
+              <i
+                class="fa-solid fa-location-dot"
+                style="
+                  color: white;
+                  font-size: 20px;
+                  margin-top: 8px;
+                  margin-left: 2px;
+                "
+              ></i>
+              <div class="footer-contact-text">
+                123 Logistics Avenue<br />
+                Mumbai, Maharashtra 400001
+              </div>
             </div>
+            <div class="footer-contact-item">
+              <i
+                class="fa-solid fa-envelope"
+                style="color: white; font-size: 18px; margin-right: 2px"
+              ></i>
+              <div class="footer-contact-text">info@onetrack.com</div>
+            </div>
+            <div class="footer-contact-item">
+              <i
+                class="fa-solid fa-phone"
+                style="color: white; font-size: 18px; margin-right: 2px"
+              ></i>
+              <div class="footer-contact-text">+91 656 786 534</div>
+            </div>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">© 2025 ChatJY. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
     </footer>
-</body>
+
+    <script>
+      const nav = document.querySelector("nav");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 100) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </body>
 </html>

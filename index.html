@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OneTrack Express - Logistics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
       * {
         margin: 0;
@@ -12,7 +14,7 @@
       }
 
       :root {
-        --color-primary: #fbbf24;
+        --color-primary: #8ac3d8;
         --color-text: #0f172a;
         --color-text-secondary: #64748b;
       }
@@ -52,16 +54,14 @@
       }
 
       .logo-icon {
-  width: 60px;  /* Increase size for better visibility */
-  height: 60px;
-  object-fit: contain;  /* Maintains aspect ratio */
-  border-radius: 50%;   /* Optional: makes it circular */
-       /* Background for transparent areas */
-  padding: 5px;   
-  margin-top: -20px; 
-  margin-bottom: -20px;      /* Optional: adds spacing */
-}
-
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 50%;
+        padding: 5px;
+        margin-top: -20px; 
+        margin-bottom: -20px;
+      }
 
       .nav-links {
         display: flex;
@@ -78,11 +78,7 @@
       }
 
       .nav-links a:hover {
-        color: #fbbf24;
-      }
-
-      .nav-links a.active {
-        color: #fbbf24;
+        color: #8ac3d8;
       }
 
       .hero {
@@ -162,23 +158,25 @@
       }
 
       .quote-btn {
-        background: #adcfee;
+        background: #8ac3d8;
         color: #0f172a;
         padding: 1rem 2.5rem;
         border-radius: 50px;
-        border: none;
+        border: 2px solid transparent;
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
-        box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(138, 195, 216, 0.4);
         animation: fadeInUp 0.8s ease-out 0.4s backwards;
       }
 
       .quote-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
-        background: #fcd34d;
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 15px 45px rgba(138, 195, 216, 0.5),
+                    0 5px 20px rgba(255, 140, 0, 0.15);
+        background: #9dd3e8;
+        border-color: rgba(138, 195, 216, 0.3);
       }
 
       @keyframes fadeInUp {
@@ -199,18 +197,20 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
+        background: rgba(138, 195, 216, 0.3);
+        border: 2px solid rgba(138, 195, 216, 0.5);
         color: white;
         font-size: 1.5rem;
         cursor: pointer;
         z-index: 4;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
       }
 
       .nav-arrow:hover {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(138, 195, 216, 0.6);
+        border-color: #8ac3d8;
         transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 8px 25px rgba(138, 195, 216, 0.4);
       }
 
       .nav-arrow.left {
@@ -237,17 +237,24 @@
         background: rgba(255, 255, 255, 0.3);
         border-radius: 2px;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+
+      .hero-indicator:hover {
+        background: rgba(138, 195, 216, 0.6);
+        width: 45px;
       }
 
       .hero-indicator.active {
-        background: #fbbf24;
+        background: #8ac3d8;
         width: 50px;
+        box-shadow: 0 2px 10px rgba(138, 195, 216, 0.6);
       }
 
       .contact-section {
         position: relative;
-        background: #fbbf24;
+        background: #8ac3d8;
         border-radius: 20px;
         margin: 2rem auto;
         padding: 1.5rem 2rem;
@@ -310,18 +317,21 @@
         color: #0f172a;
         padding: 1rem 2rem;
         border-radius: 50px;
-        border: none;
+        border: 2px solid transparent;
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         margin-left: 2.5rem;
       }
 
       .drop-line-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(138, 195, 216, 0.35),
+                    0 5px 15px rgba(255, 140, 0, 0.1);
+        border-color: rgba(138, 195, 216, 0.4);
+        background: rgba(255, 255, 255, 0.95);
       }
 
       .contact-info {
@@ -355,226 +365,11 @@
         font-weight: 500;
       }
 
-      .services-section {
+      .about-section {
         padding: 6rem 3rem;
         background: white;
         max-width: 1400px;
         margin: 0 auto;
-      }
-
-      .services-header {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .services-title {
-        font-size: 3.5rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 1rem;
-      }
-
-      .services-subtitle {
-        font-size: 1.1rem;
-        color: #64748b;
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-
-      .services-carousel-wrapper {
-        overflow: hidden;
-        margin-bottom: 3rem;
-        position: relative;
-      }
-
-      .services-grid {
-        display: flex;
-        gap: 2rem;
-        transition: transform 0.6s ease-in-out;
-      }
-
-      .service-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s, box-shadow 0.3s;
-        flex: 0 0 calc(33.333% - 1.35rem);
-        min-height: 400px;
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .service-image {
-        position: relative;
-        width: 100%;
-        height: 250px;
-        overflow: hidden;
-      }
-
-      .service-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-      }
-
-      .service-card:hover .service-image img {
-        transform: scale(1.1);
-      }
-
-      .plane-icon {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        font-size: 2rem;
-      }
-
-      .service-content {
-        padding: 2rem;
-      }
-
-      .service-icon {
-        margin-bottom: 1rem;
-      }
-
-      .service-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 1rem;
-      }
-
-      .service-description {
-        font-size: 0.95rem;
-        color: #64748b;
-        line-height: 1.6;
-      }
-
-      .carousel-dots {
-        display: flex;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-bottom: 3rem;
-      }
-
-      .dot {
-        width: 40px;
-        height: 8px;
-        background: #e2e8f0;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .dot.active {
-        background: #fbbf24;
-        width: 50px;
-      }
-
-      .cta-section {
-        background: #fbbf24;
-        border-radius: 50px;
-        padding: 0.75rem 3rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .cta-text {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #0f172a;
-        margin: 0;
-      }
-
-      .cta-button {
-        background: transparent;
-        color: #0f172a;
-        border: none;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: transform 0.3s;
-        padding: 0.5rem 1rem;
-      }
-
-      .cta-button:hover {
-        transform: translateX(5px);
-      }
-
-      .stats-section {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 3rem 3rem;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-      }
-
-      .stat-card {
-        background: transparent;
-        padding: 3rem 2rem;
-        text-align: center;
-        position: relative;
-        transition: transform 0.3s;
-      }
-
-      .stat-card:hover {
-        transform: scale(1.05);
-      }
-
-      .stat-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 1.5rem;
-        background: transparent;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-      }
-
-      .stat-number {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: #0f172a;
-        margin-bottom: 0.5rem;
-        line-height: 1;
-      }
-
-      .stat-label {
-        font-size: 1.1rem;
-        color: #64748b;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .stat-card:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1px;
-        height: 60%;
-        background: #e2e8f0;
-      }
-
-      .about-section {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 6rem 3rem 3rem;
       }
 
       .about-container {
@@ -590,7 +385,10 @@
         height: 500px;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 20px 60px rgba(138, 195, 216, 0.25),
+                    0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 3px solid rgba(138, 195, 216, 0.1);
+        transition: all 0.4s ease;
       }
 
       .about-image img {
@@ -602,6 +400,12 @@
 
       .about-image:hover img {
         transform: scale(1.05);
+      }
+
+      .about-image:hover {
+        box-shadow: 0 25px 70px rgba(138, 195, 216, 0.35),
+                    0 12px 35px rgba(255, 140, 0, 0.1);
+        border-color: rgba(138, 195, 216, 0.2);
       }
 
       .about-content {
@@ -646,14 +450,20 @@
       .feature-icon {
         width: 50px;
         height: 50px;
-        background: var(--color-primary);
+        background: linear-gradient(135deg, var(--color-primary) 0%, #9dd3e8 100%);
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.5rem;
         flex-shrink: 0;
-        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+        box-shadow: 0 4px 15px rgba(138, 195, 216, 0.35);
+        transition: all 0.3s ease;
+      }
+
+      .feature-item:hover .feature-icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 8px 25px rgba(138, 195, 216, 0.45);
       }
 
       .feature-text h4 {
@@ -667,6 +477,106 @@
         font-size: 0.95rem;
         color: var(--color-text-secondary);
         line-height: 1.5;
+      }
+
+      .cta-section {
+        background: #8ac3d8;
+        border-radius: 50px;
+        padding: 0.75rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 900px;
+        margin: 2rem auto;
+      }
+
+      .cta-text {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin: 0;
+      }
+
+      .cta-button {
+        background: transparent;
+        color: #0f172a;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+      }
+
+      .cta-button:hover {
+        transform: translateX(5px);
+        color: #0f172a;
+        text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
+      }
+
+      .stats-section {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem 3rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+      }
+
+      .stat-card {
+        background: transparent;
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+        transition: all 0.3s ease;
+        border-radius: 15px;
+      }
+
+      .stat-card:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, rgba(138, 195, 216, 0.05) 0%, rgba(138, 195, 216, 0.12) 100%);
+        box-shadow: 0 10px 30px rgba(138, 195, 216, 0.25);
+      }
+
+      .stat-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: #64748b;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .stat-card:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 60%;
+        background: #e2e8f0;
       }
 
       .section-header {
@@ -722,13 +632,16 @@
         background: white;
         padding: 2rem;
         border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(138, 195, 216, 0.15);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(138, 195, 216, 0.1);
       }
 
       .content-box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(138, 195, 216, 0.35), 
+                    0 0 0 1px rgba(138, 195, 216, 0.2);
+        border-color: #8ac3d8;
       }
 
       .content-box h2 {
@@ -762,7 +675,6 @@
         object-fit: cover;
       }
 
-      /* CONTACT FORM SECTION */
       .contact-form-section {
         position: relative;
         min-height: 100vh;
@@ -851,14 +763,20 @@
       .contact-detail-icon {
         width: 60px;
         height: 60px;
-        background: var(--color-primary);
+        background: linear-gradient(135deg, var(--color-primary) 0%, #9dd3e8 100%);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.8rem;
         flex-shrink: 0;
-        box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4);
+        box-shadow: 0 4px 20px rgba(138, 195, 216, 0.4);
+        transition: all 0.3s ease;
+      }
+
+      .contact-detail-item:hover .contact-detail-icon {
+        transform: scale(1.1);
+        box-shadow: 0 8px 30px rgba(138, 195, 216, 0.5);
       }
 
       .contact-detail-content h3 {
@@ -878,7 +796,15 @@
         background: white;
         padding: 3rem;
         border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 20px 60px rgba(138, 195, 216, 0.25),
+                    0 10px 30px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(138, 195, 216, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .contact-form-side:hover {
+        box-shadow: 0 25px 70px rgba(138, 195, 216, 0.3),
+                    0 12px 35px rgba(0, 0, 0, 0.18);
       }
 
       .contact-form-title {
@@ -925,7 +851,8 @@
         outline: none;
         border-color: var(--color-primary);
         background: white;
-        box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        box-shadow: 0 0 0 4px rgba(138, 195, 216, 0.15),
+                    0 4px 12px rgba(138, 195, 216, 0.2);
       }
 
       .form-group textarea {
@@ -944,27 +871,28 @@
         background: var(--color-primary);
         color: var(--color-text);
         padding: 1rem 2rem;
-        border: none;
+        border: 2px solid transparent;
         border-radius: 50px;
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(138, 195, 216, 0.3);
         margin-top: 1rem;
       }
 
       .submit-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
-        background: #fcd34d;
+        transform: translateY(-4px);
+        box-shadow: 0 15px 45px rgba(138, 195, 216, 0.5),
+                    0 5px 20px rgba(255, 140, 0, 0.12);
+        background: #9dd3e8;
+        border-color: rgba(138, 195, 216, 0.3);
       }
 
       .submit-btn:active {
         transform: translateY(-1px);
       }
 
-      /* CLIENT LOGOS SECTION */
       .client-logos-section {
         padding: 6rem 3rem;
         background: #f8fafc;
@@ -975,19 +903,6 @@
       .clients-header {
         text-align: center;
         margin-bottom: 4rem;
-      }
-
-      .clients-badge {
-        display: inline-block;
-        background: rgba(251, 191, 36, 0.1);
-        color: var(--color-primary);
-        padding: 0.5rem 1.5rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        margin-bottom: 1.5rem;
-        text-transform: uppercase;
       }
 
       .clients-title {
@@ -1039,14 +954,17 @@
         padding: 2rem 3rem;
         border-radius: 15px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         min-width: 200px;
         height: 120px;
+        border: 2px solid transparent;
       }
 
       .logo-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(138, 195, 216, 0.3),
+                    0 5px 15px rgba(255, 140, 0, 0.1);
+        border-color: rgba(138, 195, 216, 0.2);
       }
 
       .logo-item img {
@@ -1063,60 +981,189 @@
         opacity: 1;
       }
 
-      /* Placeholder logo styling */
-      .logo-placeholder {
-        width: 150px;
-        height: 70px;
+      footer {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        padding: 4rem 3rem 2rem;
+        border-radius: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-about {
+        padding-right: 2rem;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .footer-logo-icon {
+        width: 35px;
+        height: 35px;
+        background: var(--color-primary);
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      }
+
+      .footer-description {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        background: rgba(138, 195, 216, 0.15);
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .social-icon:hover {
+        background: var(--color-primary);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(138, 195, 216, 0.4),
+                    0 4px 12px rgba(255, 140, 0, 0.1);
+        border-color: rgba(138, 195, 216, 0.3);
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
         font-weight: 700;
-        color: var(--color-text-secondary);
-        background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        color: white;
       }
 
-      .clients-stats {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        margin-top: 5rem;
-        padding-top: 4rem;
-        border-top: 2px solid #e2e8f0;
+      .footer-links {
+        list-style: none;
+        padding: 0;
       }
 
-      .client-stat-item {
-        text-align: center;
+      .footer-links li {
+        margin-bottom: 0.8rem;
       }
 
-      .client-stat-number {
-        font-size: 3rem;
-        font-weight: 800;
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-links a:hover {
         color: var(--color-primary);
-        margin-bottom: 0.5rem;
-        line-height: 1;
+        transform: translateX(5px);
+        text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
       }
 
-      .client-stat-label {
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .footer-contact-icon {
+        width: 35px;
+        height: 35px;
+        background: rgba(251, 191, 36, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1rem;
-        color: var(--color-text-secondary);
-        font-weight: 500;
+        flex-shrink: 0;
+        color: var(--color-primary);
+      }
+
+      .footer-contact-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+      }
+
+      .footer-copyright {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .footer-bottom-links a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .footer-bottom-links a:hover {
+        color: var(--color-primary);
+        text-shadow: 0 2px 8px rgba(138, 195, 216, 0.3);
       }
 
       /* MOBILE OPTIMIZATIONS */
       @media (max-width: 768px) {
+        body {
+          padding: 0;
+        }
+
         nav {
-          padding: 1rem 1.5rem;
+          padding: 1rem 1rem;
         }
 
         .logo {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         .logo-icon {
-          width: 28px;
-          height: 28px;
+          width: 40px;
+          height: 40px;
+          margin-top: -10px;
+          margin-bottom: -10px;
         }
 
         .nav-links {
@@ -1126,6 +1173,10 @@
         .hero {
           height: 100vh;
           min-height: 600px;
+        }
+
+        .hero-content {
+          padding: 0 1.5rem;
         }
 
         .hero-title {
@@ -1150,11 +1201,11 @@
         }
 
         .nav-arrow.left {
-          left: 0.5rem;
+          left: 1rem;
         }
 
         .nav-arrow.right {
-          right: 0.5rem;
+          right: 1rem;
         }
 
         .hero-indicators {
@@ -1272,82 +1323,13 @@
           font-size: 0.9rem;
         }
 
-        .services-section {
-          padding: 3rem 1rem;
-        }
-
-        .services-header {
-          margin-bottom: 2rem;
-        }
-
-        .services-title {
-          font-size: 2rem;
-        }
-
-        .services-subtitle {
-          font-size: 1rem;
-          padding: 0 1rem;
-        }
-
-        .services-carousel-wrapper {
-          margin-bottom: 2rem;
-          margin-left: 0;
-          margin-right: 0;
-        }
-
-        .services-grid {
-          gap: 1rem;
-          padding: 0 1rem;
-        }
-
-        .service-card {
-          flex: 0 0 calc(100% - 2rem);
-          min-height: 350px;
-          margin: 0;
-        }
-
-        .service-card:hover {
-          transform: none;
-        }
-
-        .service-image {
-          height: 180px;
-        }
-
-        .service-content {
-          padding: 1.5rem;
-        }
-
-        .service-title {
-          font-size: 1.2rem;
-          margin-bottom: 0.8rem;
-        }
-
-        .service-description {
-          font-size: 0.9rem;
-        }
-
-        .carousel-dots {
-          gap: 0.6rem;
-          margin-bottom: 2rem;
-        }
-
-        .dot {
-          width: 30px;
-          height: 6px;
-        }
-
-        .dot.active {
-          width: 40px;
-        }
-
         .cta-section {
           flex-direction: column;
           gap: 1rem;
           text-align: center;
           padding: 1.5rem;
           border-radius: 25px;
-          margin: 0 1rem;
+          margin: 2rem 1rem;
         }
 
         .cta-text {
@@ -1524,25 +1506,56 @@
           max-height: 60px;
         }
 
-        .logo-placeholder {
-          width: 120px;
-          height: 60px;
-          font-size: 1.2rem;
+        footer {
+          padding: 3rem 1.5rem 1.5rem;
+          margin: 0;
+          border-radius: 0;
         }
 
-        .clients-stats {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-          margin-top: 3rem;
-          padding-top: 2.5rem;
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+          margin-bottom: 2rem;
+          padding-bottom: 2rem;
         }
 
-        .client-stat-number {
-          font-size: 2rem;
+        .footer-about {
+          padding-right: 0;
         }
 
-        .client-stat-label {
+        .footer-logo {
+          font-size: 1.3rem;
+        }
+
+        .footer-description {
           font-size: 0.9rem;
+        }
+
+        .footer-social {
+          justify-content: flex-start;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 1.1rem;
+        }
+
+        .footer-section h3 {
+          font-size: 1.1rem;
+          margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+          padding-top: 1.5rem;
+        }
+
+        .footer-bottom-links {
+          flex-direction: column;
+          gap: 1rem;
         }
       }
 
@@ -1588,10 +1601,6 @@
           height: 400px;
         }
 
-        .service-card {
-          flex: 0 0 calc(50% - 1rem);
-        }
-
         .stats-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
@@ -1601,245 +1610,28 @@
         .stat-card:nth-child(4)::after {
           display: none;
         }
-      }
-       /* FOOTER STYLES */
-        footer {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 4rem 3rem 2rem;
-            border-radius: 20px;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
         }
 
         .footer-about {
-            padding-right: 2rem;
+          grid-column: 1 / -1;
+          padding-right: 0;
         }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .footer-logo-icon {
-            width: 35px;
-            height: 35px;
-            background: var(--color-primary);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
-
-        .footer-description {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(251, 191, 36, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .social-icon:hover {
-            background: var(--color-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
-        }
-
-        .footer-section h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: var(--color-primary);
-            transform: translateX(5px);
-        }
-
-        .footer-contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .footer-contact-icon {
-            width: 35px;
-            height: 35px;
-            background: rgba(251, 191, 36, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-            color: var(--color-primary);
-        }
-
-        .footer-contact-text {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 2rem;
-        }
-
-        .footer-copyright {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-bottom-links a:hover {
-            color: var(--color-primary);
-        }
-
-        /* MOBILE OPTIMIZATIONS */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-
-            footer {
-                padding: 3rem 1.5rem 1.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                margin-bottom: 2rem;
-                padding-bottom: 2rem;
-            }
-
-            .footer-about {
-                padding-right: 0;
-            }
-
-            .footer-logo {
-                font-size: 1.3rem;
-            }
-
-            .footer-description {
-                font-size: 0.9rem;
-            }
-
-            .footer-social {
-                justify-content: flex-start;
-            }
-
-            .social-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-
-            .footer-section h3 {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-                padding-top: 1.5rem;
-            }
-
-            .footer-bottom-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* TABLET OPTIMIZATIONS */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 2.5rem;
-            }
-
-            .footer-about {
-                grid-column: 1 / -1;
-                padding-right: 0;
-            }
-        }
+      }
     </style>
   </head>
   <body>
     <nav>
-      <div class="logo">
-  <img src="LOGO-ONNLY (1).png" alt="Axis Arabia Logistics" class="logo-icon" />
-  <div>
-    <div>AXIS ARABIA</div>
-    <div style="font-size: 0.8rem; font-weight: normal">Logistics</div>
-  </div>
-</div>
+       <a href="index.html" style="text-decoration: none;"><div class="logo">
+            <img src="LOGO-ONNLY (1).png" alt="Axis Arabia Logistics" class="logo-icon" />
+            <div>
+                <div>AXIS ARABIA</div>
+                <div style="font-size: 0.8rem; font-weight: normal">Logistics</div>
+            </div>
+        </div></a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -1976,134 +1768,31 @@
       </div>
     </section>
 
-    <!-- <section class="services-section">
-      <div class="services-header">
-        <h2 class="services-title">OneTrack Transit.</h2>
-        <p class="services-subtitle">
-          We are more than a logistics provider; we are your trusted partner in global maritime transport solutions.
-        </p>
-      </div>
-
-      <div class="services-carousel-wrapper">
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop" alt="Freight Transportation" />
-              <div class="plane-icon">✈️</div>
-            </div>
-            <div class="service-content">
-              <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <rect x="5" y="15" width="8" height="15" fill="#64748b" opacity="0.6" />
-                  <rect x="15" y="10" width="8" height="20" fill="#64748b" opacity="0.6" />
-                  <rect x="25" y="12" width="8" height="18" fill="#64748b" opacity="0.6" />
-                </svg>
-              </div>
-              <h3 class="service-title">Freight Transportation</h3>
-              <p class="service-description">
-                Encourage potential customers to reach out for freight solutions, quotes, or consultations.
-              </p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop" alt="Logistics & Distribution" />
-            </div>
-            <div class="service-content">
-              <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <rect x="8" y="8" width="10" height="10" fill="#64748b" opacity="0.6" />
-                  <rect x="20" y="8" width="10" height="10" fill="#64748b" opacity="0.6" />
-                  <rect x="8" y="20" width="10" height="10" fill="#64748b" opacity="0.6" />
-                  <rect x="20" y="20" width="10" height="10" fill="#64748b" opacity="0.6" />
-                </svg>
-              </div>
-              <h3 class="service-title">Logistics & Distribution</h3>
-              <p class="service-description">
-                Reliable solutions for storage, handling, and on-time delivery worldwide.
-              </p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=600&fit=crop" alt="Ground Transportation" />
-            </div>
-            <div class="service-content">
-              <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <circle cx="20" cy="20" r="8" fill="#64748b" opacity="0.6" />
-                  <path d="M20 12 L28 20 L20 28 L12 20 Z" fill="#64748b" opacity="0.4" />
-                </svg>
-              </div>
-              <h3 class="service-title">Ground Transportation</h3>
-              <p class="service-description">
-                Fast and secure road freight for local and regional deliveries actions.
-              </p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800&h=600&fit=crop" alt="Reverse Logistics" />
-            </div>
-            <div class="service-content">
-              <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <path d="M10 20 L20 10 L30 20 L20 30 Z" fill="#64748b" opacity="0.6" />
-                </svg>
-              </div>
-              <h3 class="service-title">Reverse Logistics</h3>
-              <p class="service-description">
-                Connecting businesses globally with fast, dependable, and time-sensitive air freight services.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="carousel-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-
-      <div class="cta-section">
-        <p class="cta-text">Do you want to connecting the world one mile at a time!</p>
-        <button class="cta-button">View All Services →</button>
-      </div>
-    </section> -->
     <div class="cta-section">
-        <p class="cta-text">Do you want to connecting the world one mile at a time!</p>
-        <button class="cta-button">View All Services →</button>
-      </div>
+      <p class="cta-text">Do you want to connecting the world one mile at a time!</p>
+      <a href="contact.html"><button class="cta-button">View All Services →</button></a>
+    </div>
 
-    <section class="stats-section" id="statsSection">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">👥</div>
-          <div class="stat-number" data-target="500">0</div>
-          <div class="stat-label">Country-wise<br>Experties</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">⚡</div>
-          <div class="stat-number" data-target="27">0</div>
-          <div class="stat-label">Years of<br>Experience</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🌍</div>
-          <div class="stat-number" data-target="20">0</div>
-          <div class="stat-label">Country Wise<br>Office</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🏆</div>
-          <div class="stat-number" data-target="23">0</div>
-          <div class="stat-label">Supported<br>Country</div>
-        </div>
-      </div>
-    </section>
+   <section class="stats-section" id="statsSection">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number" data-target="99" data-suffix="%">0</div>
+      <div class="stat-label">On-Time <br>Delivery Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="10" data-suffix="+">0</div>
+      <div class="stat-label">Years of<br>Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="10000" data-suffix="+">0</div>
+      <div class="stat-label">Shipments<br>Delivered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="250" data-suffix="+">0</div>
+      <div class="stat-label">Satisfied Corporate <br>Clients</div>
+    </div>
+  </div>
+</section>
 
     <div class="section-header">
       <h1>Seamless Logistics. Global Reach.</h1>
@@ -2142,13 +1831,11 @@
       </div>
     </div>
 
-    <!-- CONTACT FORM SECTION -->
     <section class="contact-form-section">
       <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop" alt="Contact Background" class="contact-bg-image">
       <div class="contact-overlay"></div>
       
       <div class="contact-content">
-        <!-- Left Side: Contact Info -->
         <div class="contact-info-side">
           <span class="contact-badge">Get In Touch</span>
           <h2 class="contact-main-title">Let's Start Your Journey With Us</h2>
@@ -2183,7 +1870,6 @@
           </div>
         </div>
 
-        <!-- Right Side: Contact Form -->
         <div class="contact-form-side">
           <h3 class="contact-form-title">Send Us a Message</h3>
           <p class="contact-form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
@@ -2234,10 +1920,8 @@
       </div>
     </section>
 
-    <!-- CLIENT LOGOS SECTION -->
     <section class="client-logos-section">
       <div class="clients-header">
-      
         <h2 class="clients-title">Our Valued Clients</h2>
         <p class="clients-subtitle">
           We're proud to partner with industry-leading companies worldwide, delivering excellence in logistics solutions
@@ -2246,370 +1930,262 @@
 
       <div class="logos-container">
         <div class="logos-track">
-          <!-- First set of logos -->
           <div class="logo-item">
-            <img src="partner-img1.png" alt="">
+            <img src="partner-img1.png" alt="Partner 1">
           </div>
           <div class="logo-item">
-            <img src="partner-img2.png" alt="">
+            <img src="partner-img2.png" alt="Partner 2">
           </div>
           <div class="logo-item">
-            <img src="partner-img3.png" alt="">
+            <img src="partner-img3.png" alt="Partner 3">
           </div>
           <div class="logo-item">
-            <img src="partner-img4.png" alt="">
+            <img src="partner-img4.png" alt="Partner 4">
           </div>
           <div class="logo-item">
-            <img src="partner-img5.png" alt="">
+            <img src="partner-img5.png" alt="Partner 5">
           </div>
           <div class="logo-item">
-            <img src="partner-img6.png" alt="">
+            <img src="partner-img6.png" alt="Partner 6">
           </div>
           <div class="logo-item">
-            <img src="partner-img7.png" alt="">
+            <img src="partner-img7.png" alt="Partner 7">
           </div>
           <div class="logo-item">
-            <img src="partner-img8.png" alt="">
+            <img src="partner-img8.png" alt="Partner 8">
           </div>
-
-         
+          <div class="logo-item">
+            <img src="partner-img1.png" alt="Partner 1">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img2.png" alt="Partner 2">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img3.png" alt="Partner 3">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img4.png" alt="Partner 4">
+          </div>
         </div>
       </div>
-
-     
     </section>
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <!-- About Column -->
-                <div class="footer-about">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon"></div>
-                        <div>
-                            <div>OneTrack</div>
-                            <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
-                        </div>
-                    </div>
-                    <p class="footer-description">
-                        OneTrack Express has been delivering excellence in logistics for over 27 years. We connect businesses worldwide with reliable, efficient, and innovative transportation solutions.
-                    </p>
-                    <div class="footer-social">
-                        <div class="social-icon">📘</div>
-                        <div class="social-icon">🐦</div>
-                        <div class="social-icon">📷</div>
-                        <div class="social-icon">💼</div>
-                    </div>
-                </div>
 
-                <!-- Quick Links -->
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
+    <footer>
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <div class="footer-logo-icon"></div>
+              <div>
+                <div>OneTrack</div>
+                <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+              </div>
+            </div>
+            <p class="footer-description">
+              OneTrack Express has been delivering excellence in logistics for over 27 years. We connect businesses worldwide with reliable, efficient, and innovative transportation solutions.
+            </p>
+            <div class="footer-social">
+              <div class=""><i class="fa-brands fa-facebook" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+              <div class=""><i class="fa-brands fa-instagram" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+              <div class=""><i class="fa-brands fa-whatsapp" style="color: white; font-size: 35px; margin: 8px;"></i></div>
+              <div class=""><i class="fa-brands fa-x-twitter" style="color: white; font-size: 32px; margin: 8px;"></i></div>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Our Services</a></li>
-                        <li><a href="#">Track Shipment</a></li>
+                        <li><a href="#">contact</a></li>
                         <li><a href="#">Get Quote</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News & Blog</a></li>
-                    </ul>
-                </div>
+            </ul>
+          </div>
 
-                <!-- Services -->
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Freight Transportation</a></li>
-                        <li><a href="#">Air Cargo</a></li>
-                        <li><a href="#">Ground Shipping</a></li>
-                        <li><a href="#">Warehousing</a></li>
-                        <li><a href="#">Supply Chain</a></li>
-                        <li><a href="#">Customs Clearance</a></li>
-                    </ul>
-                </div>
+          <div class="footer-section">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="#">Freight Transportation</a></li>
+              <li><a href="#">Air Cargo</a></li>
+              <li><a href="#">Ground Shipping</a></li>
+              <li><a href="#">Warehousing</a></li>
+              <li><a href="#">Supply Chain</a></li>
+              <li><a href="#">Customs Clearance</a></li>
+            </ul>
+          </div>
 
-                <!-- Contact Info -->
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">📍</div>
-                        <div class="footer-contact-text">
-                            123 Logistics Avenue<br>
-                            Mumbai, Maharashtra 400001
-                        </div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">📧</div>
-                        <div class="footer-contact-text">
-                            info@onetrack.com
-                        </div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="footer-contact-icon">📞</div>
-                        <div class="footer-contact-text">
-                            (+91) 656 786 534
-                        </div>
-                    </div>
-                </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <div class="footer-contact-item">
+              <div class=""><i class="fa-solid fa-location-dot" style="color: white; font-size: 20px; margin-top: 8px; margin-left: 2px;"></i></div>
+              <div class="footer-contact-text">
+                123 Logistics Avenue<br>
+                Mumbai, Maharashtra 400001
+              </div>
             </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    © 2025 OneTrack Express. All rights reserved.
-                </p>
-                <ul class="footer-bottom-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                </ul>
+            <div class="footer-contact-item">
+              <div class=""><i class="fa-solid fa-envelope" style="color: white; font-size: 18px; margin-right: 2px;"></i>
+</div>
+              <div class="footer-contact-text">
+                info@onetrack.com
+              </div>
             </div>
+            <div class="footer-contact-item">
+              <div class=""><i class="fa-solid fa-phone" style="color: white; font-size: 18px; margin-right: 2px;"></i></div>
+              <div class="footer-contact-text">
+                (+91) 656 786 534
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © 2025 ChatJY. All rights reserved.
+          </p>
+          
+        </div>
+      </div>
     </footer>
 
     <script>
-      // Counter animation on scroll
-      let hasAnimated = false;
-      const statsSection = document.getElementById('statsSection');
-      const statNumbers = document.querySelectorAll('.stat-number');
-      const statCards = document.querySelectorAll('.stat-card');
+  let hasAnimated = false;
+  const statsSection = document.getElementById('statsSection');
+  const statNumbers = document.querySelectorAll('.stat-number');
+  const statCards = document.querySelectorAll('.stat-card');
 
-      function animateCounters() {
-        statNumbers.forEach(stat => {
-          const target = parseInt(stat.getAttribute('data-target'));
-          const duration = 2000;
-          const steps = 60;
-          const increment = target / steps;
-          let current = 0;
-          let step = 0;
+  function animateCounters() {
+    statNumbers.forEach(stat => {
+      const target = parseInt(stat.getAttribute('data-target'));
+      const suffix = stat.getAttribute('data-suffix') || '+';
+      const duration = 2000;
+      const steps = 60;
+      const increment = target / steps;
+      let current = 0;
+      let step = 0;
 
-          const timer = setInterval(() => {
-            step++;
-            current += increment;
-            
-            if (step >= steps) {
-              stat.textContent = target + '+';
-              clearInterval(timer);
-            } else {
-              stat.textContent = Math.floor(current) + '+';
-            }
-          }, duration / steps);
-        });
+      const timer = setInterval(() => {
+        step++;
+        current += increment;
+        
+        if (step >= steps) {
+          stat.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          stat.textContent = Math.floor(current) + suffix;
+        }
+      }, duration / steps);
+    });
 
-        statCards.forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.add('animated');
-          }, index * 100);
-        });
+    statCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add('animated');
+      }, index * 100);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        animateCounters();
       }
+    });
+  }, { threshold: 0.3 });
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !hasAnimated) {
-            hasAnimated = true;
-            animateCounters();
-          }
-        });
-      }, { threshold: 0.3 });
+  observer.observe(statsSection);
 
-      observer.observe(statsSection);
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".video-slide");
+  const indicators = document.querySelectorAll(".hero-indicator");
+  const heroSubtitle = document.getElementById("heroSubtitle");
+  const heroTitle = document.getElementById("heroTitle");
+  let autoPlayInterval;
 
-      // Hero Video Carousel
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".video-slide");
-      const indicators = document.querySelectorAll(".hero-indicator");
-      const heroSubtitle = document.getElementById("heroSubtitle");
-      const heroTitle = document.getElementById("heroTitle");
-      let autoPlayInterval;
+  function goToSlide(slideIndex) {
+    slides.forEach((slide) => {
+      slide.classList.remove("active");
+      slide.pause();
+    });
+    indicators.forEach((indicator) => indicator.classList.remove("active"));
 
-      function goToSlide(slideIndex) {
-        slides.forEach((slide) => {
-          slide.classList.remove("active");
-          slide.pause();
-        });
-        indicators.forEach((indicator) => indicator.classList.remove("active"));
+    if (slideIndex >= slides.length) slideIndex = 0;
+    else if (slideIndex < 0) slideIndex = slides.length - 1;
 
-        if (slideIndex >= slides.length) slideIndex = 0;
-        else if (slideIndex < 0) slideIndex = slides.length - 1;
+    currentSlide = slideIndex;
+    slides[currentSlide].classList.add("active");
+    indicators[currentSlide].classList.add("active");
+    slides[currentSlide].play();
 
-        currentSlide = slideIndex;
-        slides[currentSlide].classList.add("active");
-        indicators[currentSlide].classList.add("active");
-        slides[currentSlide].play();
+    const currentVideo = slides[currentSlide];
+    const subtitle = currentVideo.getAttribute("data-subtitle");
+    const title = currentVideo.getAttribute("data-title");
 
-        const currentVideo = slides[currentSlide];
-        const subtitle = currentVideo.getAttribute("data-subtitle");
-        const title = currentVideo.getAttribute("data-title");
+    heroSubtitle.style.animation = "none";
+    heroTitle.style.animation = "none";
 
-        heroSubtitle.style.animation = "none";
-        heroTitle.style.animation = "none";
+    setTimeout(() => {
+      heroSubtitle.textContent = subtitle;
+      heroTitle.textContent = title;
+      heroSubtitle.style.animation = "fadeInUp 0.8s ease-out";
+      heroTitle.style.animation = "fadeInUp 0.8s ease-out 0.2s backwards";
+    }, 50);
+  }
 
-        setTimeout(() => {
-          heroSubtitle.textContent = subtitle;
-          heroTitle.textContent = title;
-          heroSubtitle.style.animation = "fadeInUp 0.8s ease-out";
-          heroTitle.style.animation = "fadeInUp 0.8s ease-out 0.2s backwards";
-        }, 50);
-      }
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+    resetAutoPlay();
+  }
 
-      function nextSlide() {
-        goToSlide(currentSlide + 1);
-        resetAutoPlay();
-      }
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+    resetAutoPlay();
+  }
 
-      function prevSlide() {
-        goToSlide(currentSlide - 1);
-        resetAutoPlay();
-      }
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+      goToSlide(currentSlide + 1);
+    }, 10000);
+  }
 
-      function startAutoPlay() {
-        autoPlayInterval = setInterval(() => {
-          goToSlide(currentSlide + 1);
-        }, 10000);
-      }
+  function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    startAutoPlay();
+  }
 
-      function resetAutoPlay() {
-        clearInterval(autoPlayInterval);
-        startAutoPlay();
-      }
+  document.getElementById("nextSlide").addEventListener("click", nextSlide);
+  document.getElementById("prevSlide").addEventListener("click", prevSlide);
 
-      document.getElementById("nextSlide").addEventListener("click", nextSlide);
-      document.getElementById("prevSlide").addEventListener("click", prevSlide);
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      goToSlide(index);
+      resetAutoPlay();
+    });
+  });
 
-      indicators.forEach((indicator, index) => {
-        indicator.addEventListener("click", () => {
-          goToSlide(index);
-          resetAutoPlay();
-        });
-      });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") prevSlide();
+    else if (e.key === "ArrowRight") nextSlide();
+  });
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") prevSlide();
-        else if (e.key === "ArrowRight") nextSlide();
-      });
+  startAutoPlay();
 
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      clearInterval(autoPlayInterval);
+      slides[currentSlide].pause();
+    } else {
+      slides[currentSlide].play();
       startAutoPlay();
+    }
+  });
 
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          clearInterval(autoPlayInterval);
-          slides[currentSlide].pause();
-        } else {
-          slides[currentSlide].play();
-          startAutoPlay();
-        }
-      });
-
-      // Navbar scroll effect
-      const nav = document.querySelector("nav");
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 100) nav.classList.add("scrolled");
-        else nav.classList.remove("scrolled");
-      });
-
-      // Services Carousel - Responsive
-      let currentServiceSlide = 0;
-      const servicesGrid = document.querySelector(".services-grid");
-      const serviceDots = document.querySelectorAll(".carousel-dots .dot");
-      const totalCards = 4;
-      let serviceAutoPlayInterval;
-
-      function getCardsPerView() {
-        const width = window.innerWidth;
-        if (width <= 768) return 1;
-        if (width <= 1024) return 2;
-        return 3;
-      }
-
-      function getMaxSlideIndex() {
-        const cardsPerView = getCardsPerView();
-        return totalCards - cardsPerView;
-      }
-
-      function showServiceSlide(slideIndex) {
-        const cardsPerView = getCardsPerView();
-        const maxSlide = getMaxSlideIndex();
-
-        if (slideIndex > maxSlide) slideIndex = 0;
-        else if (slideIndex < 0) slideIndex = maxSlide;
-
-        currentServiceSlide = slideIndex;
-
-        if (window.innerWidth <= 768) {
-          const serviceCard = servicesGrid.querySelector(".service-card");
-          if (serviceCard) {
-            const cardWidth = serviceCard.offsetWidth;
-            const gap = 16;
-            const slideDistance = cardWidth + gap;
-            const translateAmount = slideIndex * slideDistance;
-            servicesGrid.style.transform = `translateX(-${translateAmount}px)`;
-          }
-        } else if (window.innerWidth <= 1024) {
-          const translateAmount = slideIndex * 50;
-          servicesGrid.style.transform = `translateX(-${translateAmount}%)`;
-        } else {
-          const translateAmount = slideIndex * 33.333;
-          servicesGrid.style.transform = `translateX(-${translateAmount}%)`;
-        }
-
-        serviceDots.forEach((dot, index) => {
-          dot.classList.remove("active");
-          if (index >= slideIndex && index < slideIndex + cardsPerView) {
-            dot.classList.add("active");
-          }
-        });
-      }
-
-      function nextServiceSlide() {
-        const maxSlide = getMaxSlideIndex();
-        let nextSlide = currentServiceSlide + 1;
-        if (nextSlide > maxSlide) nextSlide = 0;
-        showServiceSlide(nextSlide);
-      }
-
-      function startServiceAutoPlay() {
-        serviceAutoPlayInterval = setInterval(nextServiceSlide, 5000);
-      }
-
-      function resetServiceAutoPlay() {
-        clearInterval(serviceAutoPlayInterval);
-        startServiceAutoPlay();
-      }
-
-      serviceDots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-          const cardsPerView = getCardsPerView();
-          const maxSlide = getMaxSlideIndex();
-          let targetSlide = index;
-
-          if (cardsPerView > 1) {
-            targetSlide = Math.min(index, maxSlide);
-          }
-
-          showServiceSlide(targetSlide);
-          resetServiceAutoPlay();
-        });
-      });
-
-      showServiceSlide(0);
-      startServiceAutoPlay();
-
-      servicesGrid.addEventListener("mouseenter", () => {
-        clearInterval(serviceAutoPlayInterval);
-      });
-
-      servicesGrid.addEventListener("mouseleave", () => {
-        startServiceAutoPlay();
-      });
-
-      let resizeTimeout;
-      window.addEventListener("resize", () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          showServiceSlide(0);
-          resetServiceAutoPlay();
-        }, 250);
-      });
-    </script>
+  const nav = document.querySelector("nav");
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 100) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  });
+</script>
   </body>
 </html>
