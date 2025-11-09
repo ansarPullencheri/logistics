@@ -11,6 +11,12 @@
         box-sizing: border-box;
       }
 
+      :root {
+        --color-primary: #fbbf24;
+        --color-text: #0f172a;
+        --color-text-secondary: #64748b;
+      }
+
       body {
         font-family: "Inter", "Poppins", sans-serif;
         overflow-x: hidden;
@@ -46,11 +52,16 @@
       }
 
       .logo-icon {
-        width: 35px;
-        height: 35px;
-        background: white;
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      }
+  width: 60px;  /* Increase size for better visibility */
+  height: 60px;
+  object-fit: contain;  /* Maintains aspect ratio */
+  border-radius: 50%;   /* Optional: makes it circular */
+       /* Background for transparent areas */
+  padding: 5px;   
+  margin-top: -20px; 
+  margin-bottom: -20px;      /* Optional: adds spacing */
+}
+
 
       .nav-links {
         display: flex;
@@ -151,7 +162,7 @@
       }
 
       .quote-btn {
-        background: #fbbf24;
+        background: #adcfee;
         color: #0f172a;
         padding: 1rem 2.5rem;
         border-radius: 50px;
@@ -238,9 +249,10 @@
         position: relative;
         background: #fbbf24;
         border-radius: 20px;
-        margin: 2rem 1rem;
+        margin: 2rem auto;
         padding: 1.5rem 2rem;
         overflow: hidden;
+        max-width: 1200px;
       }
 
       .container-image {
@@ -497,20 +509,637 @@
         transform: translateX(5px);
       }
 
+      .stats-section {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem 3rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+      }
+
+      .stat-card {
+        background: transparent;
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s;
+      }
+
+      .stat-card:hover {
+        transform: scale(1.05);
+      }
+
+      .stat-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: #64748b;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .stat-card:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 60%;
+        background: #e2e8f0;
+      }
+
+      .about-section {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 6rem 3rem 3rem;
+      }
+
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-image {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .about-content {
+        padding: 2rem 0;
+      }
+
+      .about-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--color-text);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .about-subtitle {
+        font-size: 1.3rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 2rem;
+      }
+
+      .about-description {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .about-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .feature-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--color-primary);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+      }
+
+      .feature-text h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 0.3rem;
+      }
+
+      .feature-text p {
+        font-size: 0.95rem;
+        color: var(--color-text-secondary);
+        line-height: 1.5;
+      }
+
+      .section-header {
+        text-align: center;
+        padding: 3rem 2rem 1rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .section-header p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .section-container {
+        min-height: 90vh;
+        display: flex;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .content-side {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        overflow-y: auto;
+        padding-right: 1rem;
+      }
+
+      .content-side::-webkit-scrollbar {
+        display: none;
+      }
+
+      .content-side {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .content-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .content-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .content-box h2 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .content-box p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      .image-side {
+        flex: 1;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 1rem;
+        height: calc(100vh - 2rem);
+        overflow: hidden;
+      }
+
+      .image-side img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* CONTACT FORM SECTION */
+      .contact-form-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+      }
+
+      .contact-bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .contact-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.9) 100%);
+        z-index: 1;
+      }
+
+      .contact-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .contact-info-side {
+        color: white;
+      }
+
+      .contact-badge {
+        display: inline-block;
+        background: rgba(251, 191, 36, 0.2);
+        color: var(--color-primary);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+      }
+
+      .contact-main-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        color: white;
+      }
+
+      .contact-main-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .contact-detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .contact-detail-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4);
+      }
+
+      .contact-detail-content h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      .contact-detail-content p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+      }
+
+      .contact-form-side {
+        background: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-form-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-form-subtitle {
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--color-text);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.9rem 1.2rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        background: white;
+        box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .submit-btn {
+        width: 100%;
+        background: var(--color-primary);
+        color: var(--color-text);
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        margin-top: 1rem;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+        background: #fcd34d;
+      }
+
+      .submit-btn:active {
+        transform: translateY(-1px);
+      }
+
+      /* CLIENT LOGOS SECTION */
+      .client-logos-section {
+        padding: 6rem 3rem;
+        background: #f8fafc;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .clients-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .clients-badge {
+        display: inline-block;
+        background: rgba(251, 191, 36, 0.1);
+        color: var(--color-primary);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+      }
+
+      .clients-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--color-text);
+        margin-bottom: 1rem;
+      }
+
+      .clients-subtitle {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .logos-container {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 0;
+      }
+
+      .logos-track {
+        display: flex;
+        gap: 4rem;
+        animation: scroll 30s linear infinite;
+      }
+
+      .logos-track:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .logo-item {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        padding: 2rem 3rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        min-width: 200px;
+        height: 120px;
+      }
+
+      .logo-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo-item img {
+        max-width: 150px;
+        max-height: 70px;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+
+      .logo-item:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+
+      /* Placeholder logo styling */
+      .logo-placeholder {
+        width: 150px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-text-secondary);
+        background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+        border-radius: 10px;
+      }
+
+      .clients-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-top: 5rem;
+        padding-top: 4rem;
+        border-top: 2px solid #e2e8f0;
+      }
+
+      .client-stat-item {
+        text-align: center;
+      }
+
+      .client-stat-number {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+      }
+
+      .client-stat-label {
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+      }
+
+      /* MOBILE OPTIMIZATIONS */
       @media (max-width: 768px) {
         nav {
-          padding: 1rem;
+          padding: 1rem 1.5rem;
+        }
+
+        .logo {
+          font-size: 1.2rem;
+        }
+
+        .logo-icon {
+          width: 28px;
+          height: 28px;
         }
 
         .nav-links {
           display: none;
         }
 
+        .hero {
+          height: 100vh;
+          min-height: 600px;
+        }
+
         .hero-title {
-          font-size: 2.5rem;
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
         }
 
         .hero-subtitle {
+          font-size: 0.9rem;
+          letter-spacing: 1px;
+        }
+
+        .quote-btn {
+          padding: 0.8rem 2rem;
           font-size: 1rem;
         }
 
@@ -521,21 +1150,35 @@
         }
 
         .nav-arrow.left {
-          left: 1rem;
+          left: 0.5rem;
         }
 
         .nav-arrow.right {
-          right: 1rem;
+          right: 0.5rem;
+        }
+
+        .hero-indicators {
+          bottom: 2rem;
+        }
+
+        .hero-indicator {
+          width: 30px;
+          height: 3px;
+        }
+
+        .hero-indicator.active {
+          width: 40px;
         }
 
         .contact-section {
-          padding: 1rem 1.5rem;
-          margin: 1rem;
+          padding: 2rem 1.5rem;
+          margin: 1.5rem 1rem;
+          border-radius: 15px;
         }
 
         .contact-grid {
           grid-template-columns: 1fr;
-          gap: 1.5rem;
+          gap: 2rem;
         }
 
         .contact-card:not(:last-child)::after {
@@ -543,21 +1186,22 @@
         }
 
         .contact-title {
-          font-size: 1.8rem;
-          margin-bottom: 1rem;
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
           margin-left: 0;
         }
 
         .card-title {
-          font-size: 1.3rem;
-          margin-bottom: 1rem;
+          font-size: 1.2rem;
+          margin-bottom: 1.2rem;
         }
 
         .drop-line-btn {
-          padding: 0.7rem 1rem;
+          padding: 0.8rem 1.5rem;
           font-size: 1rem;
           margin-left: 0;
-          margin-bottom: 1.3rem;
+          width: 100%;
+          max-width: 250px;
         }
 
         .info-item p {
@@ -565,13 +1209,67 @@
         }
 
         .icon-circle {
-          width: 40px;
-          height: 40px;
-          font-size: 1.2rem;
+          width: 45px;
+          height: 45px;
+          font-size: 1.3rem;
         }
 
         .container-image {
           display: none;
+        }
+
+        .about-section {
+          padding: 3rem 1.5rem;
+        }
+
+        .about-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .about-image {
+          order: 1;
+          height: 300px;
+        }
+
+        .about-content {
+          order: 2;
+          padding: 0;
+        }
+
+        .about-title {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .about-subtitle {
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .about-description {
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+          grid-template-columns: 1fr;
+          gap: 1.2rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+          width: 45px;
+          height: 45px;
+          font-size: 1.3rem;
+        }
+
+        .feature-text h4 {
+          font-size: 1rem;
+        }
+
+        .feature-text p {
+          font-size: 0.9rem;
         }
 
         .services-section {
@@ -580,7 +1278,6 @@
 
         .services-header {
           margin-bottom: 2rem;
-          padding: 0;
         }
 
         .services-title {
@@ -589,24 +1286,23 @@
 
         .services-subtitle {
           font-size: 1rem;
-          padding: 0;
+          padding: 0 1rem;
         }
 
         .services-carousel-wrapper {
           margin-bottom: 2rem;
-          margin-left: -1rem;
-          margin-right: -1rem;
-          overflow: hidden;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         .services-grid {
           gap: 1rem;
-          padding-left: 1rem;
+          padding: 0 1rem;
         }
 
         .service-card {
           flex: 0 0 calc(100% - 2rem);
-          min-height: 380px;
+          min-height: 350px;
           margin: 0;
         }
 
@@ -615,7 +1311,7 @@
         }
 
         .service-image {
-          height: 200px;
+          height: 180px;
         }
 
         .service-content {
@@ -624,18 +1320,34 @@
 
         .service-title {
           font-size: 1.2rem;
+          margin-bottom: 0.8rem;
         }
 
         .service-description {
           font-size: 0.9rem;
         }
 
+        .carousel-dots {
+          gap: 0.6rem;
+          margin-bottom: 2rem;
+        }
+
+        .dot {
+          width: 30px;
+          height: 6px;
+        }
+
+        .dot.active {
+          width: 40px;
+        }
+
         .cta-section {
           flex-direction: column;
-          gap: 1.5rem;
+          gap: 1rem;
           text-align: center;
-          padding: 1rem 2rem;
-          border-radius: 30px;
+          padding: 1.5rem;
+          border-radius: 25px;
+          margin: 0 1rem;
         }
 
         .cta-text {
@@ -645,505 +1357,476 @@
         .cta-button {
           font-size: 1rem;
         }
+
+        .stats-section {
+          padding: 2rem 1rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .stat-card {
+          padding: 2rem 1.5rem;
+          border-bottom: 1px solid #e2e8f0;
+        }
+
+        .stat-card:last-child {
+          border-bottom: none;
+        }
+
+        .stat-card::after {
+          display: none !important;
+        }
+
+        .stat-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+        }
+
+        .stat-label {
+          font-size: 1rem;
+        }
+
+        .section-header {
+          padding: 2rem 1.5rem 1rem;
+        }
+
+        .section-header h1 {
+          font-size: 1.8rem;
+        }
+
+        .section-header p {
+          font-size: 0.95rem;
+          padding: 0 0.5rem;
+        }
+
+        .section-container {
+          flex-direction: column;
+          min-height: auto;
+          padding: 1rem;
+          gap: 1.5rem;
+        }
+
+        .image-side {
+          position: relative;
+          height: 250px;
+          top: 0;
+          order: 1;
+        }
+
+        .content-side {
+          overflow-y: visible;
+          padding-right: 0;
+          order: 2;
+        }
+
+        .content-box {
+          padding: 1.5rem;
+        }
+
+        .content-box h2 {
+          font-size: 1.3rem;
+        }
+
+        .content-box p {
+          font-size: 0.95rem;
+        }
+
+        .contact-form-section {
+          min-height: auto;
+          padding: 3rem 1rem;
+        }
+
+        .contact-content {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .contact-info-side {
+          order: 2;
+        }
+
+        .contact-form-side {
+          order: 1;
+          padding: 2rem 1.5rem;
+        }
+
+        .contact-main-title {
+          font-size: 2rem;
+        }
+
+        .contact-main-description {
+          font-size: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .contact-form-title {
+          font-size: 1.5rem;
+        }
+
+        .contact-detail-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+        }
+
+        .contact-details {
+          gap: 1.5rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .submit-btn {
+          font-size: 1rem;
+          padding: 0.9rem 1.5rem;
+        }
+
+        .client-logos-section {
+          padding: 3rem 1rem;
+        }
+
+        .clients-header {
+          margin-bottom: 2.5rem;
+        }
+
+        .clients-title {
+          font-size: 2rem;
+        }
+
+        .clients-subtitle {
+          font-size: 1rem;
+          padding: 0 1rem;
+        }
+
+        .logos-track {
+          gap: 2rem;
+        }
+
+        .logo-item {
+          min-width: 150px;
+          height: 100px;
+          padding: 1.5rem 2rem;
+        }
+
+        .logo-item img {
+          max-width: 120px;
+          max-height: 60px;
+        }
+
+        .logo-placeholder {
+          width: 120px;
+          height: 60px;
+          font-size: 1.2rem;
+        }
+
+        .clients-stats {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+          margin-top: 3rem;
+          padding-top: 2.5rem;
+        }
+
+        .client-stat-number {
+          font-size: 2rem;
+        }
+
+        .client-stat-label {
+          font-size: 0.9rem;
+        }
       }
 
+      /* TABLET OPTIMIZATIONS */
       @media (max-width: 1024px) and (min-width: 769px) {
+        .hero-title {
+          font-size: 3.5rem;
+        }
+
         .contact-section {
           padding: 2rem 1.5rem;
-          margin: 1rem auto;
-          width: calc(100% - 15px);
+          margin: 1.5rem;
         }
 
         .contact-grid {
           grid-template-columns: repeat(3, 1fr);
-          gap: 1rem;
-        }
-
-        .contact-card {
-          padding: 1rem;
-          border-radius: 12px;
+          gap: 1.5rem;
         }
 
         .contact-title {
-          font-size: 1.8rem;
-          margin-bottom: 0.8rem;
+          font-size: 2rem;
+          margin-left: 1.5rem;
         }
 
         .card-title {
-          font-size: 1.3rem;
-          margin-bottom: 0.8rem;
-        }
-
-        .info-item p {
-          font-size: 0.9rem;
-        }
-
-        .icon-circle {
-          width: 38px;
-          height: 38px;
-          font-size: 1rem;
+          font-size: 1.4rem;
         }
 
         .drop-line-btn {
-          padding: 0.6rem 1.2rem;
-          font-size: 0.9rem;
-          margin-left: 0;
+          margin-left: 1.5rem;
         }
 
         .container-image {
-          width: 180px;
-          height: 45%;
-          right: 20px;
-          opacity: 0.8;
+          width: 200px;
+          opacity: 0.7;
         }
 
-        .service-card {
-          flex: 0 0 calc(50% - 1rem);
-        }
-      }
-
-      @media (max-width: 1200px) and (min-width: 1025px) {
-        .service-card {
-          flex: 0 0 calc(50% - 1rem);
-        }
-      }
-
-    .stats-section {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .stat-card {
-      background: transparent;
-      padding: 3rem 2rem;
-      text-align: center;
-      position: relative;
-      transition: transform 0.3s;
-    }
-
-    .stat-card:hover {
-      transform: scale(1.05);
-    }
-
-    .stat-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1.5rem;
-      background: transparent;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-    }
-
-    .stat-number {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 0.5rem;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 1.1rem;
-      color: #64748b;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    /* Divider lines between cards */
-    .stat-card:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 60%;
-      background: #e2e8f0;
-    }
-
-    @media (max-width: 1024px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-
-      .stat-card:nth-child(2)::after,
-      .stat-card:nth-child(4)::after {
-        display: none;
-      }
-
-      .stat-card:nth-child(1)::after,
-      .stat-card:nth-child(3)::after {
-        right: -0.75rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .stats-section {
-        padding: 0 1rem;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .stat-card {
-        padding: 2rem 1.5rem;
-      }
-
-      .stat-card::after {
-        display: none !important;
-      }
-
-      .stat-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .stat-number {
-        font-size: 2.5rem;
-      }
-
-      .stat-label {
-        font-size: 1rem;
-      }
-    }
-
-    .about-section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 6rem 3rem;
-        }
-
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .about-section {
+          padding: 4rem 2rem;
         }
 
         .about-image {
-            position: relative;
-            width: 100%;
-            height:72%;
+          height: 400px;
+        }
+
+        .service-card {
+          flex: 0 0 calc(50% - 1rem);
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+
+        .stat-card:nth-child(2)::after,
+        .stat-card:nth-child(4)::after {
+          display: none;
+        }
+      }
+       /* FOOTER STYLES */
+        footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 3rem 2rem;
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            border: 3px solid var(--color-primary);
-            border-radius: 15px;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .about-image:hover::before {
-            opacity: 1;
-        }
-
-        .about-content {
-            padding: 2rem 0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .about-badge {
-            display: inline-block;
-            background: rgba(251, 191, 36, 0.1);
-            color: var(--color-primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-        }
-
-        .about-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--color-text);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .about-subtitle {
-            font-size: 1.3rem;
-            color: var(--color-primary);
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-
-        .about-description {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .about-features {
+        .footer-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .feature-item {
+        .footer-about {
+            padding-right: 2rem;
+        }
+
+        .footer-logo {
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        .feature-icon {
-            width: 50px;
-            height: 50px;
+        .footer-logo-icon {
+            width: 35px;
+            height: 35px;
             background: var(--color-primary);
-            border-radius: 12px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .feature-text {
-            flex: 1;
-        }
-
-        .feature-text h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 0.3rem;
-        }
-
-        .feature-text p {
-            font-size: 0.95rem;
-            color: var(--color-text-secondary);
-            line-height: 1.5;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 3rem;
-            margin-bottom: 2.5rem;
-            padding: 2rem 0;
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: var(--color-text-secondary);
-            font-weight: 500;
-        }
-
-        .about-cta {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .btn-primary {
+        .social-icon:hover {
             background: var(--color-primary);
-            color: var(--color-text);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
-        }
-
-        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--color-text);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            border: 2px solid var(--color-text);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-text);
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             color: white;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .about-section {
-                padding: 4rem 2rem;
-            }
-
-            .about-container {
-                gap: 3rem;
-            }
-
-            .about-title {
-                font-size: 2.8rem;
-            }
-
-            .about-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .about-image {
-                height: 450px;
-            }
-
-            .about-content {
-                height: auto;
-            }
+        .footer-links {
+            list-style: none;
+            padding: 0;
         }
 
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+            transform: translateX(5px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-contact-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            color: var(--color-primary);
+        }
+
+        .footer-contact-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* MOBILE OPTIMIZATIONS */
         @media (max-width: 768px) {
-            .about-section {
-                padding: 3rem 1.5rem;
+            body {
+                padding: 1rem;
             }
 
-            .about-container {
+            footer {
+                padding: 3rem 1.5rem 1.5rem;
+            }
+
+            .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
+                margin-bottom: 2rem;
+                padding-bottom: 2rem;
             }
 
-            /* Image first on mobile */
-            .about-image {
-                order: 1;
-                height: 400px;
+            .footer-about {
+                padding-right: 0;
             }
 
-            .about-content {
-                order: 2;
-                padding: 0;
-                height: auto;
-            }
-
-            .about-title {
-                font-size: 2.2rem;
-            }
-
-            .about-subtitle {
-                font-size: 1rem;
-            }
-
-            .about-description {
-                font-size: 1rem;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-
-            .about-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .about-cta {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .about-section {
-                padding: 2rem 1rem;
-            }
-
-            .about-title {
-                font-size: 1.8rem;
-            }
-
-            .about-badge {
-                font-size: 0.8rem;
-                padding: 0.4rem 1.2rem;
-            }
-
-            .about-image {
-                height: 300px;
-                border-radius: 15px;
-            }
-
-            .feature-icon {
-                width: 45px;
-                height: 45px;
+            .footer-logo {
                 font-size: 1.3rem;
             }
 
-            .feature-text h4 {
-                font-size: 1rem;
+            .footer-description {
+                font-size: 0.9rem;
             }
 
-            .feature-text p {
-                font-size: 0.9rem;
+            .footer-social {
+                justify-content: flex-start;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                padding-top: 1.5rem;
+            }
+
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* TABLET OPTIMIZATIONS */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-about {
+                grid-column: 1 / -1;
+                padding-right: 0;
             }
         }
     </style>
@@ -1151,18 +1834,17 @@
   <body>
     <nav>
       <div class="logo">
-        <div class="logo-icon"></div>
-        <div>
-          <div>OneTrack</div>
-          <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
-        </div>
-      </div>
+  <img src="LOGO-ONNLY (1).png" alt="Axis Arabia Logistics" class="logo-icon" />
+  <div>
+    <div>AXIS ARABIA</div>
+    <div style="font-size: 0.8rem; font-weight: normal">Logistics</div>
+  </div>
+</div>
       <ul class="nav-links">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-       
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -1174,7 +1856,7 @@
           muted
           loop
           playsinline
-          data-subtitle="EST. 1996 - Land Transport"
+          data-subtitle="Seamless Logistics. Global Reach."
           data-title="Speed. Trust. Excellence"
         >
           <source src="home1-banner-video.mp4" type="video/mp4" />
@@ -1185,7 +1867,7 @@
           loop
           playsinline
           data-subtitle="Reliable Freight Solutions"
-          data-title="Your Cargo, Our Priority"
+          data-title="Seamless Logistics. Global Reach."
         >
           <source src="home2-video-area.mp4" type="video/mp4" />
         </video>
@@ -1194,7 +1876,7 @@
           muted
           loop
           playsinline
-          data-subtitle="Global Logistics Network"
+          data-subtitle="Your Cargo, Our Commitment."
           data-title="Connecting Continents"
         >
           <source src="home3-video.mp4" type="video/mp4" />
@@ -1202,10 +1884,8 @@
       </div>
       <div class="video-overlay"></div>
       <div class="hero-content">
-        <p class="hero-subtitle" id="heroSubtitle">
-          EST. 1996 - Land Transport
-        </p>
-        <h1 class="hero-title" id="heroTitle">Speed. Trust. Excellence</h1>
+        <p class="hero-subtitle" id="heroSubtitle">Your Cargo, Our Commitment.</p>
+        <h1 class="hero-title" id="heroTitle">Seamless Logistics. Global Reach.</h1>
         <button class="quote-btn">Contact</button>
       </div>
       <button class="nav-arrow left" id="prevSlide">‹</button>
@@ -1250,61 +1930,57 @@
         </div>
       </div>
     </section>
-     <section class="about-section">
-        <div class="about-container">
-            <!-- Left Side: Image -->
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=1000&fit=crop" alt="OneTrack Express Logistics">
-            </div>
 
-            <!-- Right Side: Content -->
-            <div class="about-content">
-                <h2 class="about-title">About Us</h2>
-                <p class="about-subtitle">Your Trusted Global Logistics Partner</p>
-                <p class="about-description">
-                    OneTrack Express has been at the forefront of the logistics industry for over 27 years, providing reliable, efficient, and innovative transportation solutions. We connect businesses and communities worldwide through our comprehensive network of freight, air, and ground transportation services.
-                </p>
-
-                <div class="about-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">🚀</div>
-                        <div class="feature-text">
-                            <h4>Fast Delivery</h4>
-                            <p>Express shipping with real-time tracking</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🛡️</div>
-                        <div class="feature-text">
-                            <h4>Secure Transport</h4>
-                            <p>100% cargo insurance coverage</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🌍</div>
-                        <div class="feature-text">
-                            <h4>Global Network</h4>
-                            <p>Operations in 23+ countries</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">💼</div>
-                        <div class="feature-text">
-                            <h4>Expert Team</h4>
-                            <p>500+ logistics professionals</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=1000&fit=crop" alt="OneTrack Express Logistics">
         </div>
+        <div class="about-content">
+          <h2 class="about-title">About Us</h2>
+          <p class="about-subtitle">Leading provider of end-to-end freight, transport, warehousing & customs solutions</p>
+          <p class="about-description">
+            At axis arabia, we specialize in providing end-to-end logistics and freight forwarding solutions across Saudi Arabia and around the world. With decades of expertise, advanced infrastructure, and a dedicated team, we ensure every shipment — big or small — reaches its destination safely and on time.
+          </p>
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">🚀</div>
+              <div class="feature-text">
+                <h4>Fast Delivery</h4>
+                <p>Express shipping with real-time tracking</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🛡️</div>
+              <div class="feature-text">
+                <h4>Secure Transport</h4>
+                <p>100% cargo insurance coverage</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🌍</div>
+              <div class="feature-text">
+                <h4>Global Network</h4>
+                <p>Operations in 23+ countries</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">💼</div>
+              <div class="feature-text">
+                <h4>Expert Team</h4>
+                <p>500+ logistics professionals</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="services-section">
+    <!-- <section class="services-section">
       <div class="services-header">
         <h2 class="services-title">OneTrack Transit.</h2>
         <p class="services-subtitle">
-          We are more than a logistics provider; we are your trusted partner in
-          global maritime transport solutions.
+          We are more than a logistics provider; we are your trusted partner in global maritime transport solutions.
         </p>
       </div>
 
@@ -1312,148 +1988,75 @@
         <div class="services-grid">
           <div class="service-card">
             <div class="service-image">
-              <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop"
-                alt="Freight Transportation"
-              />
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop" alt="Freight Transportation" />
               <div class="plane-icon">✈️</div>
             </div>
             <div class="service-content">
               <div class="service-icon">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <rect
-                    x="5"
-                    y="15"
-                    width="8"
-                    height="15"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
-                  <rect
-                    x="15"
-                    y="10"
-                    width="8"
-                    height="20"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
-                  <rect
-                    x="25"
-                    y="12"
-                    width="8"
-                    height="18"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
+                  <rect x="5" y="15" width="8" height="15" fill="#64748b" opacity="0.6" />
+                  <rect x="15" y="10" width="8" height="20" fill="#64748b" opacity="0.6" />
+                  <rect x="25" y="12" width="8" height="18" fill="#64748b" opacity="0.6" />
                 </svg>
               </div>
               <h3 class="service-title">Freight Transportation</h3>
               <p class="service-description">
-                Encourage potential customers to reach out for freight
-                solutions, quotes, or consultations.
+                Encourage potential customers to reach out for freight solutions, quotes, or consultations.
               </p>
             </div>
           </div>
 
           <div class="service-card">
             <div class="service-image">
-              <img
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
-                alt="Logistics & Distribution"
-              />
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop" alt="Logistics & Distribution" />
             </div>
             <div class="service-content">
               <div class="service-icon">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <rect
-                    x="8"
-                    y="8"
-                    width="10"
-                    height="10"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
-                  <rect
-                    x="20"
-                    y="8"
-                    width="10"
-                    height="10"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
-                  <rect
-                    x="8"
-                    y="20"
-                    width="10"
-                    height="10"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
-                  <rect
-                    x="20"
-                    y="20"
-                    width="10"
-                    height="10"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
+                  <rect x="8" y="8" width="10" height="10" fill="#64748b" opacity="0.6" />
+                  <rect x="20" y="8" width="10" height="10" fill="#64748b" opacity="0.6" />
+                  <rect x="8" y="20" width="10" height="10" fill="#64748b" opacity="0.6" />
+                  <rect x="20" y="20" width="10" height="10" fill="#64748b" opacity="0.6" />
                 </svg>
               </div>
               <h3 class="service-title">Logistics & Distribution</h3>
               <p class="service-description">
-                Reliable solutions for storage, handling, and on-time delivery
-                worldwide.
+                Reliable solutions for storage, handling, and on-time delivery worldwide.
               </p>
             </div>
           </div>
 
           <div class="service-card">
             <div class="service-image">
-              <img
-                src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=600&fit=crop"
-                alt="Ground Transportation"
-              />
+              <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=600&fit=crop" alt="Ground Transportation" />
             </div>
             <div class="service-content">
               <div class="service-icon">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                   <circle cx="20" cy="20" r="8" fill="#64748b" opacity="0.6" />
-                  <path
-                    d="M20 12 L28 20 L20 28 L12 20 Z"
-                    fill="#64748b"
-                    opacity="0.4"
-                  />
+                  <path d="M20 12 L28 20 L20 28 L12 20 Z" fill="#64748b" opacity="0.4" />
                 </svg>
               </div>
               <h3 class="service-title">Ground Transportation</h3>
               <p class="service-description">
-                Fast and secure road freight for local and regional deliveries
-                actions.
+                Fast and secure road freight for local and regional deliveries actions.
               </p>
             </div>
           </div>
 
           <div class="service-card">
             <div class="service-image">
-              <img
-                src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800&h=600&fit=crop"
-                alt="Reverse Logistics"
-              />
+              <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800&h=600&fit=crop" alt="Reverse Logistics" />
             </div>
             <div class="service-content">
               <div class="service-icon">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <path
-                    d="M10 20 L20 10 L30 20 L20 30 Z"
-                    fill="#64748b"
-                    opacity="0.6"
-                  />
+                  <path d="M10 20 L20 10 L30 20 L20 30 Z" fill="#64748b" opacity="0.6" />
                 </svg>
               </div>
               <h3 class="service-title">Reverse Logistics</h3>
               <p class="service-description">
-                Connecting businesses globally with fast, dependable, and
-                time-sensitive air freight services.
+                Connecting businesses globally with fast, dependable, and time-sensitive air freight services.
               </p>
             </div>
           </div>
@@ -1468,94 +2071,349 @@
       </div>
 
       <div class="cta-section">
-        <p class="cta-text">
-          Do you want to connecting the world one mile at a time!
-        </p>
+        <p class="cta-text">Do you want to connecting the world one mile at a time!</p>
         <button class="cta-button">View All Services →</button>
       </div>
-    </section>
+    </section> -->
+    <div class="cta-section">
+        <p class="cta-text">Do you want to connecting the world one mile at a time!</p>
+        <button class="cta-button">View All Services →</button>
+      </div>
+
     <section class="stats-section" id="statsSection">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon">👥</div>
-        <div class="stat-number" data-target="500">0</div>
-        <div class="stat-label">Country-wise<br>Experties</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Country-wise<br>Experties</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-number" data-target="27">0</div>
+          <div class="stat-label">Years of<br>Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌍</div>
+          <div class="stat-number" data-target="20">0</div>
+          <div class="stat-label">Country Wise<br>Office</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number" data-target="23">0</div>
+          <div class="stat-label">Supported<br>Country</div>
+        </div>
       </div>
+    </section>
 
-      <div class="stat-card">
-        <div class="stat-icon">⚡</div>
-        <div class="stat-number" data-target="27">0</div>
-        <div class="stat-label">Years of<br>Experience</div>
+    <div class="section-header">
+      <h1>Seamless Logistics. Global Reach.</h1>
+      <p>Empowering businesses with fast, reliable, and transparent logistics solutions — from freight to warehousing, we move your cargo with precision and care.</p>
+    </div>
+    
+    <div class="section-container">
+      <div class="content-side">
+        <div class="content-box">
+          <h2>First Content Box</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+        <div class="content-box">
+          <h2>Second Content Box</h2>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="content-box">
+          <h2>Third Content Box</h2>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+        <div class="content-box">
+          <h2>Fourth Content Box</h2>
+          <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        </div>
+        <div class="content-box">
+          <h2>Fifth Content Box</h2>
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+        </div>
+        <div class="content-box">
+          <h2>Sixth Content Box</h2>
+          <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+        </div>
       </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🌍</div>
-        <div class="stat-number" data-target="20">0</div>
-        <div class="stat-label">Country Wise<br>Office</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🏆</div>
-        <div class="stat-number" data-target="23">0</div>
-        <div class="stat-label">Supported<br>Country</div>
+      <div class="image-side">
+        <img src="home1-blog-img2.jpg" alt="Description">
       </div>
     </div>
-  </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-form-section">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop" alt="Contact Background" class="contact-bg-image">
+      <div class="contact-overlay"></div>
+      
+      <div class="contact-content">
+        <!-- Left Side: Contact Info -->
+        <div class="contact-info-side">
+          <span class="contact-badge">Get In Touch</span>
+          <h2 class="contact-main-title">Let's Start Your Journey With Us</h2>
+          <p class="contact-main-description">
+            Ready to streamline your logistics? Whether you need a quote, have questions about our services, or want to discuss a custom solution, our team is here to help. Contact us today and experience the OneTrack difference.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">📍</div>
+              <div class="contact-detail-content">
+                <h3>Visit Us</h3>
+                <p>123 Logistics Avenue<br>Mumbai, Maharashtra 400001<br>India</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">📧</div>
+              <div class="contact-detail-content">
+                <h3>Email Us</h3>
+                <p>info@onetrack.com<br>support@onetrack.com</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">📞</div>
+              <div class="contact-detail-content">
+                <h3>Call Us</h3>
+                <p>(+91) 656 786 534<br>(+91) 456 765 456</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Contact Form -->
+        <div class="contact-form-side">
+          <h3 class="contact-form-title">Send Us a Message</h3>
+          <p class="contact-form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
+
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" placeholder="Doe" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" placeholder="john@example.com" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+91 123 456 7890">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Service Type</label>
+              <select>
+                <option>Select a service</option>
+                <option>Freight Transportation</option>
+                <option>Logistics & Distribution</option>
+                <option>Ground Transportation</option>
+                <option>Reverse Logistics</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Message *</label>
+              <textarea placeholder="Tell us about your shipping needs..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT LOGOS SECTION -->
+    <section class="client-logos-section">
+      <div class="clients-header">
+      
+        <h2 class="clients-title">Our Valued Clients</h2>
+        <p class="clients-subtitle">
+          We're proud to partner with industry-leading companies worldwide, delivering excellence in logistics solutions
+        </p>
+      </div>
+
+      <div class="logos-container">
+        <div class="logos-track">
+          <!-- First set of logos -->
+          <div class="logo-item">
+            <img src="partner-img1.png" alt="">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img2.png" alt="">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img3.png" alt="">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img4.png" alt="">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img5.png" alt="">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img6.png" alt="">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img7.png" alt="">
+          </div>
+          <div class="logo-item">
+            <img src="partner-img8.png" alt="">
+          </div>
+
+         
+        </div>
+      </div>
+
+     
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Column -->
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon"></div>
+                        <div>
+                            <div>OneTrack</div>
+                            <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        OneTrack Express has been delivering excellence in logistics for over 27 years. We connect businesses worldwide with reliable, efficient, and innovative transportation solutions.
+                    </p>
+                    <div class="footer-social">
+                        <div class="social-icon">📘</div>
+                        <div class="social-icon">🐦</div>
+                        <div class="social-icon">📷</div>
+                        <div class="social-icon">💼</div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Track Shipment</a></li>
+                        <li><a href="#">Get Quote</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News & Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Freight Transportation</a></li>
+                        <li><a href="#">Air Cargo</a></li>
+                        <li><a href="#">Ground Shipping</a></li>
+                        <li><a href="#">Warehousing</a></li>
+                        <li><a href="#">Supply Chain</a></li>
+                        <li><a href="#">Customs Clearance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">📍</div>
+                        <div class="footer-contact-text">
+                            123 Logistics Avenue<br>
+                            Mumbai, Maharashtra 400001
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">📧</div>
+                        <div class="footer-contact-text">
+                            info@onetrack.com
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">📞</div>
+                        <div class="footer-contact-text">
+                            (+91) 656 786 534
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 OneTrack Express. All rights reserved.
+                </p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <script>
-    // Counter animation on scroll
-    let hasAnimated = false;
-    const statsSection = document.getElementById('statsSection');
-    const statNumbers = document.querySelectorAll('.stat-number');
-    const statCards = document.querySelectorAll('.stat-card');
+      // Counter animation on scroll
+      let hasAnimated = false;
+      const statsSection = document.getElementById('statsSection');
+      const statNumbers = document.querySelectorAll('.stat-number');
+      const statCards = document.querySelectorAll('.stat-card');
 
-    function animateCounters() {
-      statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const steps = 60;
-        const increment = target / steps;
-        let current = 0;
-        let step = 0;
+      function animateCounters() {
+        statNumbers.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          const duration = 2000;
+          const steps = 60;
+          const increment = target / steps;
+          let current = 0;
+          let step = 0;
 
-        const timer = setInterval(() => {
-          step++;
-          current += increment;
-          
-          if (step >= steps) {
-            stat.textContent = target + '+';
-            clearInterval(timer);
-          } else {
-            stat.textContent = Math.floor(current) + '+';
+          const timer = setInterval(() => {
+            step++;
+            current += increment;
+            
+            if (step >= steps) {
+              stat.textContent = target + '+';
+              clearInterval(timer);
+            } else {
+              stat.textContent = Math.floor(current) + '+';
+            }
+          }, duration / steps);
+        });
+
+        statCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('animated');
+          }, index * 100);
+        });
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            animateCounters();
           }
-        }, duration / steps);
-      });
+        });
+      }, { threshold: 0.3 });
 
-      // Add animation class to cards
-      statCards.forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add('animated');
-        }, index * 100);
-      });
-    }
+      observer.observe(statsSection);
 
-    // Intersection Observer for scroll trigger
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
-          hasAnimated = true;
-          animateCounters();
-        }
-      });
-    }, {
-      threshold: 0.3
-    });
-
-    observer.observe(statsSection);
-</script>
-
-
-    <script>
       // Hero Video Carousel
       let currentSlide = 0;
       const slides = document.querySelectorAll(".video-slide");
@@ -1672,37 +2530,30 @@
         const cardsPerView = getCardsPerView();
         const maxSlide = getMaxSlideIndex();
 
-        // Loop back to start or end
         if (slideIndex > maxSlide) slideIndex = 0;
         else if (slideIndex < 0) slideIndex = maxSlide;
 
         currentServiceSlide = slideIndex;
 
-        // Calculate translation
         if (window.innerWidth <= 768) {
-          // Mobile: Get actual card width including gap
           const serviceCard = servicesGrid.querySelector(".service-card");
           if (serviceCard) {
             const cardWidth = serviceCard.offsetWidth;
-            const gap = 16; // 1rem = 16px
+            const gap = 16;
             const slideDistance = cardWidth + gap;
             const translateAmount = slideIndex * slideDistance;
             servicesGrid.style.transform = `translateX(-${translateAmount}px)`;
           }
         } else if (window.innerWidth <= 1024) {
-          // Tablet: 2 cards - slide by 50%
           const translateAmount = slideIndex * 50;
           servicesGrid.style.transform = `translateX(-${translateAmount}%)`;
         } else {
-          // Desktop: 3 cards - slide by 33.333%
           const translateAmount = slideIndex * 33.333;
           servicesGrid.style.transform = `translateX(-${translateAmount}%)`;
         }
 
-        // Update dots - show which cards are currently visible
         serviceDots.forEach((dot, index) => {
           dot.classList.remove("active");
-          // Highlight dots for currently visible cards
           if (index >= slideIndex && index < slideIndex + cardsPerView) {
             dot.classList.add("active");
           }
@@ -1727,14 +2578,10 @@
 
       serviceDots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
-          // On mobile, each dot represents a card position
-          // On tablet/desktop, calculate the appropriate slide position
           const cardsPerView = getCardsPerView();
           const maxSlide = getMaxSlideIndex();
-
           let targetSlide = index;
 
-          // Adjust for tablet/desktop where multiple cards are visible
           if (cardsPerView > 1) {
             targetSlide = Math.min(index, maxSlide);
           }
@@ -1744,11 +2591,9 @@
         });
       });
 
-      // Initialize
       showServiceSlide(0);
       startServiceAutoPlay();
 
-      // Pause auto-scroll on hover
       servicesGrid.addEventListener("mouseenter", () => {
         clearInterval(serviceAutoPlayInterval);
       });
@@ -1757,7 +2602,6 @@
         startServiceAutoPlay();
       });
 
-      // Handle window resize
       let resizeTimeout;
       window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);

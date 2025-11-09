@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - OneTrack Express</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #fbbf24;
+            --color-text: #0f172a;
+            --color-text-secondary: #64748b;
+        }
+
+        body {
+            font-family: "Inter", "Poppins", sans-serif;
+            overflow-x: hidden;
+            background: white;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+
+        .nav-links a.active {
+            color: #fbbf24;
+        }
+
+        /* HERO SECTION */
+        .services-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop') center/cover;
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--color-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* SERVICES GRID SECTION */
+        .services-section {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 350px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-icon-overlay {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background: var(--color-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+        }
+
+        .service-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .learn-more-btn {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .learn-more-btn:hover {
+            background: var(--color-primary);
+            color: var(--color-text);
+            transform: translateX(5px);
+        }
+
+        /* FEATURES SECTION */
+        .features-section {
+            background: #f8fafc;
+            padding: 6rem 3rem;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* PROCESS SECTION */
+        .process-section {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-primary), rgba(251, 191, 36, 0.3));
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            border: 5px solid white;
+        }
+
+        .process-step h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* PRICING SECTION */
+        .pricing-section {
+            background: #f8fafc;
+            padding: 6rem 3rem;
+        }
+
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--color-primary);
+            color: var(--color-text);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card.featured h3 {
+            color: white;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card.featured .pricing-period {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-btn {
+            width: 100%;
+            background: var(--color-primary);
+            color: var(--color-text);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.4);
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background: white;
+            color: var(--color-text);
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 6rem 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .cta-button {
+            background: var(--color-primary);
+            color: var(--color-text);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+            background: #fcd34d;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--color-text);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .services-hero {
+                height: 50vh;
+                min-height: 350px;
+                margin-top: 60px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .services-section {
+                margin: 3rem auto;
+                padding: 0 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .service-image {
+                height: 250px;
+            }
+
+            .service-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .features-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .process-section {
+                margin: 3rem auto;
+                padding: 0 1.5rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .pricing-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .cta-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .cta-content p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 3rem auto 0;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <div>
+                <div>OneTrack</div>
+                <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="services-hero">
+        <div class="hero-content">
+            <span class="hero-badge">Our Services</span>
+            <h1 class="hero-title">Comprehensive Logistics Solutions</h1>
+            <p class="hero-description">
+                From freight transportation to warehousing, we offer end-to-end logistics services designed to meet your unique business needs
+            </p>
+        </div>
+    </section>
+
+    <!-- SERVICES GRID -->
+    <section class="services-section">
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop" alt="Freight Transportation">
+                    <div class="service-icon-overlay">🚚</div>
+                </div>
+                <div class="service-content">
+                    <h3>Freight Transportation</h3>
+                    <p>Comprehensive land freight solutions for domestic and international shipments with real-time tracking.</p>
+                    <ul class="service-features">
+                        <li>Full Truckload (FTL) Services</li>
+                        <li>Less Than Truckload (LTL)</li>
+                        <li>Real-time GPS Tracking</li>
+                        <li>Express Delivery Options</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More →</button>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop" alt="Air Cargo">
+                    <div class="service-icon-overlay">✈️</div>
+                </div>
+                <div class="service-content">
+                    <h3>Air Cargo Services</h3>
+                    <p>Fast and reliable air freight solutions for time-sensitive shipments across the globe.</p>
+                    <ul class="service-features">
+                        <li>Express Air Freight</li>
+                        <li>Charter Services</li>
+                        <li>Customs Clearance</li>
+                        <li>Temperature-Controlled</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More →</button>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&h=600&fit=crop" alt="Warehousing">
+                    <div class="service-icon-overlay">📦</div>
+                </div>
+                <div class="service-content">
+                    <h3>Warehousing Solutions</h3>
+                    <p>State-of-the-art storage facilities with advanced inventory management systems.</p>
+                    <ul class="service-features">
+                        <li>Climate-Controlled Storage</li>
+                        <li>Inventory Management</li>
+                        <li>Pick & Pack Services</li>
+                        <li>Distribution Centers</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More →</button>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=600&fit=crop" alt="Supply Chain">
+                    <div class="service-icon-overlay">🔗</div>
+                </div>
+                <div class="service-content">
+                    <h3>Supply Chain Management</h3>
+                    <p>End-to-end supply chain solutions optimized for efficiency and cost-effectiveness.</p>
+                    <ul class="service-features">
+                        <li>Supply Chain Consulting</li>
+                        <li>Order Management</li>
+                        <li>Vendor Coordination</li>
+                        <li>Analytics & Reporting</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More →</button>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800&h=600&fit=crop" alt="Ocean Freight">
+                    <div class="service-icon-overlay">🚢</div>
+                </div>
+                <div class="service-content">
+                    <h3>Ocean Freight</h3>
+                    <p>Cost-effective sea freight services for bulk shipments and containerized cargo.</p>
+                    <ul class="service-features">
+                        <li>FCL & LCL Shipping</li>
+                        <li>Port-to-Port Delivery</li>
+                        <li>Container Management</li>
+                        <li>Hazardous Cargo</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More →</button>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800&h=600&fit=crop" alt="Last Mile">
+                    <div class="service-icon-overlay">🏠</div>
+                </div>
+                <div class="service-content">
+                    <h3>Last Mile Delivery</h3>
+                    <p>Efficient final-leg delivery services ensuring your packages reach customers on time.</p>
+                    <ul class="service-features">
+                        <li>Same-Day Delivery</li>
+                        <li>Scheduled Deliveries</li>
+                        <li>Proof of Delivery</li>
+                        <li>Returns Management</li>
+                    </ul>
+                    <button class="learn-more-btn">Learn More →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Why Choose Our Services</h2>
+                <p>Experience the OneTrack advantage with features designed for your success</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Fast Delivery</h4>
+                    <p>Express shipping options with guaranteed delivery times</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h4>Real-Time Tracking</h4>
+                    <p>Track your shipments 24/7 with our advanced GPS system</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>Secure Transport</h4>
+                    <p>100% cargo insurance and tamper-proof packaging</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h4>Competitive Rates</h4>
+                    <p>Best prices without compromising on quality</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h4>Global Network</h4>
+                    <p>Operations in 23+ countries worldwide</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h4>24/7 Support</h4>
+                    <p>Round-the-clock customer service team</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h4>Custom Solutions</h4>
+                    <p>Tailored logistics services for your needs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♻️</div>
+                    <h4>Eco-Friendly</h4>
+                    <p>Sustainable practices and green logistics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process-section">
+        <div class="section-header">
+            <h2>Our Simple Process</h2>
+            <p>Getting started with OneTrack Express is easy and straightforward</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Request Quote</h4>
+                <p>Share your shipping requirements and get an instant quote</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Book Service</h4>
+                <p>Confirm your booking and schedule pickup at your convenience</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Track Shipment</h4>
+                <p>Monitor your cargo in real-time from pickup to delivery</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>Receive Delivery</h4>
+                <p>Get proof of delivery and confirmation once cargo arrives</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <div class="section-header">
+                <h2>Flexible Pricing Plans</h2>
+                <p>Choose the plan that best fits your shipping needs and budget</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="pricing-price">₹499</div>
+                    <p class="pricing-period">Per Shipment</p>
+                    <ul class="pricing-features">
+                        <li>Up to 50 kg</li>
+                        <li>Standard Delivery (5-7 days)</li>
+                        <li>Basic Tracking</li>
+                        <li>Email Support</li>
+                        <li>Standard Insurance</li>
+                    </ul>
+                    <button class="pricing-btn">Get Started</button>
+                </div>
+
+                <!-- Featured Plan -->
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">Most Popular</span>
+                    <h3>Business</h3>
+                    <div class="pricing-price">₹2,499</div>
+                    <p class="pricing-period">Monthly Plan</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited Shipments</li>
+                        <li>Express Delivery (2-3 days)</li>
+                        <li>Premium Tracking</li>
+                        <li>Priority Support 24/7</li>
+                        <li>Full Insurance Coverage</li>
+                        <li>Dedicated Account Manager</li>
+                    </ul>
+                    <button class="pricing-btn">Get Started</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="pricing-price">Custom</div>
+                    <p class="pricing-period">Tailored Solutions</p>
+                    <ul class="pricing-features">
+                        <li>Custom Volume Pricing</li>
+                        <li>Same-Day Delivery Options</li>
+                        <li>Advanced Analytics</li>
+                        <li>API Integration</li>
+                        <li>Premium Insurance</li>
+                        <li>Dedicated Support Team</li>
+                    </ul>
+                    <button class="pricing-btn">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of businesses that trust OneTrack Express for their logistics needs. Experience the difference today.</p>
+            <div class="cta-buttons">
+                <button class="cta-button">Request a Quote</button>
+                <button class="cta-button secondary">Schedule a Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 OneTrack Express. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
