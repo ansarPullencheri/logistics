@@ -1621,6 +1621,41 @@
           padding-right: 0;
         }
       }
+      /* Add this new CSS for footer logo specifically */
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .footer-logo-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 50%;
+        padding: 5px;
+      }
+
+      .footer-logo-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-logo-text .main-text {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .footer-logo-text .sub-text {
+        font-size: 0.75rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.8);
+      }
     </style>
   </head>
   <body>
@@ -1974,21 +2009,49 @@
       <div class="footer-container">
         <div class="footer-content">
           <div class="footer-about">
-            <div class="footer-logo">
-              <div class="footer-logo-icon"></div>
-              <div>
-                <div>OneTrack</div>
-                <div style="font-size: 0.8rem; font-weight: normal">Express.</div>
+            <a href="index.html" style="text-decoration: none">
+              <div class="footer-logo">
+                <img
+                  src="LOGO-ONNLY (1).png"
+                  alt="Axis Arabia Logistics"
+                  class="footer-logo-img"
+                />
+                <div class="footer-logo-text">
+                  <div class="main-text">AXIS ARABIA</div>
+                  <div class="sub-text">Logistics</div>
+                </div>
               </div>
-            </div>
+            </a>
             <p class="footer-description">
-              OneTrack Express has been delivering excellence in logistics for over 27 years. We connect businesses worldwide with reliable, efficient, and innovative transportation solutions.
+              Axis arabia logistics has been delivering excellence in logistics
+              for over 27 years. We connect businesses worldwide with reliable,
+              efficient, and innovative transportation solutions.
             </p>
             <div class="footer-social">
-              <div class=""><i class="fa-brands fa-facebook" style="color: white; font-size: 35px; margin: 8px;"></i></div>
-              <div class=""><i class="fa-brands fa-instagram" style="color: white; font-size: 35px; margin: 8px;"></i></div>
-              <div class=""><i class="fa-brands fa-whatsapp" style="color: white; font-size: 35px; margin: 8px;"></i></div>
-              <div class=""><i class="fa-brands fa-x-twitter" style="color: white; font-size: 32px; margin: 8px;"></i></div>
+              <div class="">
+                <i
+                  class="fa-brands fa-facebook"
+                  style="color: white; font-size: 35px; margin: 8px"
+                ></i>
+              </div>
+              <div class="">
+                <i
+                  class="fa-brands fa-instagram"
+                  style="color: white; font-size: 35px; margin: 8px"
+                ></i>
+              </div>
+              <div class="">
+                <i
+                  class="fa-brands fa-whatsapp"
+                  style="color: white; font-size: 35px; margin: 8px"
+                ></i>
+              </div>
+              <div class="">
+                <i
+                  class="fa-brands fa-x-twitter"
+                  style="color: white; font-size: 32px; margin: 8px"
+                ></i>
+              </div>
             </div>
           </div>
 
