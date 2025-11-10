@@ -86,6 +86,34 @@
         color: var(--color-primary);
       }
 
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
       /* HERO SECTION */
       .about-hero {
         position: relative;
@@ -546,7 +574,7 @@
         transform: translateY(-1px);
       }
 
-      /* FOOTER - MATCHING MAIN PAGE */
+      /* FOOTER */
       footer {
         background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         color: white;
@@ -581,13 +609,32 @@
         margin-bottom: 1.5rem;
         font-size: 1.5rem;
         font-weight: bold;
+        color: white;
       }
 
-      .footer-logo-icon {
-        width: 35px;
-        height: 35px;
-        background: var(--color-primary);
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      .footer-logo-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 50%;
+        padding: 5px;
+      }
+
+      .footer-logo-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-logo-text .main-text {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .footer-logo-text .sub-text {
+        font-size: 0.75rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.8);
       }
 
       .footer-description {
@@ -662,19 +709,6 @@
         margin-bottom: 1.2rem;
       }
 
-      .footer-contact-icon {
-        width: 35px;
-        height: 35px;
-        background: rgba(251, 191, 36, 0.1);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-        flex-shrink: 0;
-        color: var(--color-primary);
-      }
-
       .footer-contact-text {
         color: rgba(255, 255, 255, 0.7);
         font-size: 0.9rem;
@@ -718,7 +752,7 @@
         }
 
         .logo {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         .logo-icon {
@@ -728,8 +762,34 @@
           margin-bottom: -10px;
         }
 
+        .hamburger {
+          display: flex;
+        }
+
         .nav-links {
-          display: none;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          height: 100vh;
+          width: 70%;
+          max-width: 300px;
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          transition: right 0.4s ease;
+          z-index: 1000;
+          box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-links a {
+          font-size: 1.2rem;
+          padding: 1rem;
         }
 
         .about-hero {
@@ -912,48 +972,13 @@
           padding-right: 0;
         }
       }
-      /* Add this new CSS for footer logo specifically */
-      .footer-logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: white;
-      }
-
-      .footer-logo-img {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        border-radius: 50%;
-        padding: 5px;
-      }
-
-      .footer-logo-text {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .footer-logo-text .main-text {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: white;
-      }
-
-      .footer-logo-text .sub-text {
-        font-size: 0.75rem;
-        font-weight: normal;
-        color: rgba(255, 255, 255, 0.8);
-      }
     </style>
   </head>
   <body>
     <!-- NAVIGATION -->
     <nav>
-      <a href="index.html" style="text-decoration: none"
-        ><div class="logo">
+      <a href="index.html" style="text-decoration: none">
+        <div class="logo">
           <img
             src="LOGO-ONNLY (1).png"
             alt="Axis Arabia Logistics"
@@ -963,14 +988,19 @@
             <div>AXIS ARABIA</div>
             <div style="font-size: 0.8rem; font-weight: normal">Logistics</div>
           </div>
-        </div></a
-      >
+        </div>
+      </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
 
     <!-- HERO SECTION -->
@@ -1220,7 +1250,7 @@
       </div>
     </section>
 
-    <!-- FOOTER - MATCHING MAIN PAGE -->
+    <!-- FOOTER -->
     <footer>
       <div class="footer-container">
         <div class="footer-content">
@@ -1274,10 +1304,10 @@
           <div class="footer-section">
             <h3>Quick Links</h3>
             <ul class="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Our Services</a></li>
-              <li><a href="#">contact</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="services.html">Our Services</a></li>
+              <li><a href="contact.html">Contact</a></li>
               <li><a href="#">Get Quote</a></li>
             </ul>
           </div>
@@ -1330,11 +1360,7 @@
 
         <div class="footer-bottom">
           <p class="footer-copyright">© 2025 ChatJY. All rights reserved.</p>
-          <div class="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
-          </div>
+          
         </div>
       </div>
     </footer>
@@ -1346,6 +1372,32 @@
           nav.classList.add("scrolled");
         } else {
           nav.classList.remove("scrolled");
+        }
+      });
+
+      // Mobile navigation
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      const navItems = document.querySelectorAll('.nav-links a');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when clicking on a link
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
         }
       });
     </script>

@@ -81,6 +81,34 @@
         color: #8ac3d8;
       }
 
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
       .hero {
         position: relative;
         height: 100vh;
@@ -1015,13 +1043,32 @@
         margin-bottom: 1.5rem;
         font-size: 1.5rem;
         font-weight: bold;
+        color: white;
       }
 
-      .footer-logo-icon {
-        width: 35px;
-        height: 35px;
-        background: var(--color-primary);
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      .footer-logo-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 50%;
+        padding: 5px;
+      }
+
+      .footer-logo-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-logo-text .main-text {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .footer-logo-text .sub-text {
+        font-size: 0.75rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.8);
       }
 
       .footer-description {
@@ -1166,8 +1213,34 @@
           margin-bottom: -10px;
         }
 
+        .hamburger {
+          display: flex;
+        }
+
         .nav-links {
-          display: none;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          height: 100vh;
+          width: 70%;
+          max-width: 300px;
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          transition: right 0.4s ease;
+          z-index: 1000;
+          box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-links a {
+          font-size: 1.2rem;
+          padding: 1rem;
         }
 
         .hero {
@@ -1621,41 +1694,6 @@
           padding-right: 0;
         }
       }
-      /* Add this new CSS for footer logo specifically */
-      .footer-logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: white;
-      }
-
-      .footer-logo-img {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        border-radius: 50%;
-        padding: 5px;
-      }
-
-      .footer-logo-text {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .footer-logo-text .main-text {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: white;
-      }
-
-      .footer-logo-text .sub-text {
-        font-size: 0.75rem;
-        font-weight: normal;
-        color: rgba(255, 255, 255, 0.8);
-      }
     </style>
   </head>
   <body>
@@ -1673,6 +1711,11 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
 
     <section class="hero">
@@ -2059,10 +2102,10 @@
             <h3>Quick Links</h3>
             <ul class="footer-links">
               <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Services</a></li>
-                        <li><a href="#">contact</a></li>
-                        <li><a href="#">Get Quote</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">contact</a></li>
+              <li><a href="#">Get Quote</a></li>
             </ul>
           </div>
 
@@ -2088,8 +2131,7 @@
               </div>
             </div>
             <div class="footer-contact-item">
-              <div class=""><i class="fa-solid fa-envelope" style="color: white; font-size: 18px; margin-right: 2px;"></i>
-</div>
+              <div class=""><i class="fa-solid fa-envelope" style="color: white; font-size: 18px; margin-right: 2px;"></i></div>
               <div class="footer-contact-text">
                 info@onetrack.com
               </div>
@@ -2107,148 +2149,173 @@
           <p class="footer-copyright">
             © 2025 ChatJY. All rights reserved.
           </p>
-          
         </div>
       </div>
     </footer>
 
     <script>
-  let hasAnimated = false;
-  const statsSection = document.getElementById('statsSection');
-  const statNumbers = document.querySelectorAll('.stat-number');
-  const statCards = document.querySelectorAll('.stat-card');
+      let hasAnimated = false;
+      const statsSection = document.getElementById('statsSection');
+      const statNumbers = document.querySelectorAll('.stat-number');
+      const statCards = document.querySelectorAll('.stat-card');
 
-  function animateCounters() {
-    statNumbers.forEach(stat => {
-      const target = parseInt(stat.getAttribute('data-target'));
-      const suffix = stat.getAttribute('data-suffix') || '+';
-      const duration = 2000;
-      const steps = 60;
-      const increment = target / steps;
-      let current = 0;
-      let step = 0;
+      function animateCounters() {
+        statNumbers.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          const suffix = stat.getAttribute('data-suffix') || '+';
+          const duration = 2000;
+          const steps = 60;
+          const increment = target / steps;
+          let current = 0;
+          let step = 0;
 
-      const timer = setInterval(() => {
-        step++;
-        current += increment;
-        
-        if (step >= steps) {
-          stat.textContent = target + suffix;
-          clearInterval(timer);
-        } else {
-          stat.textContent = Math.floor(current) + suffix;
-        }
-      }, duration / steps);
-    });
+          const timer = setInterval(() => {
+            step++;
+            current += increment;
+            
+            if (step >= steps) {
+              stat.textContent = target + suffix;
+              clearInterval(timer);
+            } else {
+              stat.textContent = Math.floor(current) + suffix;
+            }
+          }, duration / steps);
+        });
 
-    statCards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.add('animated');
-      }, index * 100);
-    });
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !hasAnimated) {
-        hasAnimated = true;
-        animateCounters();
+        statCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('animated');
+          }, index * 100);
+        });
       }
-    });
-  }, { threshold: 0.3 });
 
-  observer.observe(statsSection);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            animateCounters();
+          }
+        });
+      }, { threshold: 0.3 });
 
-  let currentSlide = 0;
-  const slides = document.querySelectorAll(".video-slide");
-  const indicators = document.querySelectorAll(".hero-indicator");
-  const heroSubtitle = document.getElementById("heroSubtitle");
-  const heroTitle = document.getElementById("heroTitle");
-  let autoPlayInterval;
+      observer.observe(statsSection);
 
-  function goToSlide(slideIndex) {
-    slides.forEach((slide) => {
-      slide.classList.remove("active");
-      slide.pause();
-    });
-    indicators.forEach((indicator) => indicator.classList.remove("active"));
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".video-slide");
+      const indicators = document.querySelectorAll(".hero-indicator");
+      const heroSubtitle = document.getElementById("heroSubtitle");
+      const heroTitle = document.getElementById("heroTitle");
+      let autoPlayInterval;
 
-    if (slideIndex >= slides.length) slideIndex = 0;
-    else if (slideIndex < 0) slideIndex = slides.length - 1;
+      function goToSlide(slideIndex) {
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+          slide.pause();
+        });
+        indicators.forEach((indicator) => indicator.classList.remove("active"));
 
-    currentSlide = slideIndex;
-    slides[currentSlide].classList.add("active");
-    indicators[currentSlide].classList.add("active");
-    slides[currentSlide].play();
+        if (slideIndex >= slides.length) slideIndex = 0;
+        else if (slideIndex < 0) slideIndex = slides.length - 1;
 
-    const currentVideo = slides[currentSlide];
-    const subtitle = currentVideo.getAttribute("data-subtitle");
-    const title = currentVideo.getAttribute("data-title");
+        currentSlide = slideIndex;
+        slides[currentSlide].classList.add("active");
+        indicators[currentSlide].classList.add("active");
+        slides[currentSlide].play();
 
-    heroSubtitle.style.animation = "none";
-    heroTitle.style.animation = "none";
+        const currentVideo = slides[currentSlide];
+        const subtitle = currentVideo.getAttribute("data-subtitle");
+        const title = currentVideo.getAttribute("data-title");
 
-    setTimeout(() => {
-      heroSubtitle.textContent = subtitle;
-      heroTitle.textContent = title;
-      heroSubtitle.style.animation = "fadeInUp 0.8s ease-out";
-      heroTitle.style.animation = "fadeInUp 0.8s ease-out 0.2s backwards";
-    }, 50);
-  }
+        heroSubtitle.style.animation = "none";
+        heroTitle.style.animation = "none";
 
-  function nextSlide() {
-    goToSlide(currentSlide + 1);
-    resetAutoPlay();
-  }
+        setTimeout(() => {
+          heroSubtitle.textContent = subtitle;
+          heroTitle.textContent = title;
+          heroSubtitle.style.animation = "fadeInUp 0.8s ease-out";
+          heroTitle.style.animation = "fadeInUp 0.8s ease-out 0.2s backwards";
+        }, 50);
+      }
 
-  function prevSlide() {
-    goToSlide(currentSlide - 1);
-    resetAutoPlay();
-  }
+      function nextSlide() {
+        goToSlide(currentSlide + 1);
+        resetAutoPlay();
+      }
 
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      goToSlide(currentSlide + 1);
-    }, 10000);
-  }
+      function prevSlide() {
+        goToSlide(currentSlide - 1);
+        resetAutoPlay();
+      }
 
-  function resetAutoPlay() {
-    clearInterval(autoPlayInterval);
-    startAutoPlay();
-  }
+      function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+          goToSlide(currentSlide + 1);
+        }, 10000);
+      }
 
-  document.getElementById("nextSlide").addEventListener("click", nextSlide);
-  document.getElementById("prevSlide").addEventListener("click", prevSlide);
+      function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      }
 
-  indicators.forEach((indicator, index) => {
-    indicator.addEventListener("click", () => {
-      goToSlide(index);
-      resetAutoPlay();
-    });
-  });
+      document.getElementById("nextSlide").addEventListener("click", nextSlide);
+      document.getElementById("prevSlide").addEventListener("click", prevSlide);
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") prevSlide();
-    else if (e.key === "ArrowRight") nextSlide();
-  });
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+          goToSlide(index);
+          resetAutoPlay();
+        });
+      });
 
-  startAutoPlay();
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") prevSlide();
+        else if (e.key === "ArrowRight") nextSlide();
+      });
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      clearInterval(autoPlayInterval);
-      slides[currentSlide].pause();
-    } else {
-      slides[currentSlide].play();
       startAutoPlay();
-    }
-  });
 
-  const nav = document.querySelector("nav");
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 100) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
-  });
-</script>
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearInterval(autoPlayInterval);
+          slides[currentSlide].pause();
+        } else {
+          slides[currentSlide].play();
+          startAutoPlay();
+        }
+      });
+
+      const nav = document.querySelector("nav");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 100) nav.classList.add("scrolled");
+        else nav.classList.remove("scrolled");
+      });
+
+      // Mobile navigation
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      const navItems = document.querySelectorAll('.nav-links a');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when clicking on a link
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
+      });
+    </script>
   </body>
 </html>
