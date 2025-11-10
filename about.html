@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us - OneTrack Express</title>
+    <title>About Us - Axis Arabia Logistics</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -236,6 +236,162 @@
         color: var(--color-text-secondary);
         line-height: 1.8;
         margin-bottom: 1.5rem;
+      }
+
+      /* MISSION & VISION SECTION */
+      .mission-vision-section {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        padding: 6rem 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mission-vision-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(138, 195, 216, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .mission-vision-section::after {
+        content: "";
+        position: absolute;
+        bottom: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(138, 195, 216, 0.08) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .mission-vision-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .mission-vision-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .mission-vision-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        padding: 3rem;
+        border-radius: 25px;
+        border: 2px solid rgba(138, 195, 216, 0.2);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mission-vision-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary) 0%,
+          #9dd3e8 100%
+        );
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .mission-vision-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .mission-vision-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(138, 195, 216, 0.4);
+        box-shadow: 0 20px 60px rgba(138, 195, 216, 0.3),
+          0 10px 30px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .mv-icon-wrapper {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          #9dd3e8 100%
+        );
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(138, 195, 216, 0.4);
+        transition: all 0.4s ease;
+      }
+
+      .mission-vision-card:hover .mv-icon-wrapper {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 15px 40px rgba(138, 195, 216, 0.6);
+      }
+
+      .mv-icon {
+        font-size: 2.8rem;
+      }
+
+      .mission-vision-card h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.5px;
+      }
+
+      .mission-vision-card p {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.9;
+        margin-bottom: 1.2rem;
+      }
+
+      .mission-vision-card ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.5rem;
+      }
+
+      .mission-vision-card li {
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+      }
+
+      .mission-vision-card li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--color-primary);
+        font-weight: bold;
+        font-size: 1.2rem;
       }
 
       /* VALUES SECTION */
@@ -830,6 +986,36 @@
           font-size: 1rem;
         }
 
+        .mission-vision-section {
+          padding: 3rem 1.5rem;
+        }
+
+        .mission-vision-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .mission-vision-card {
+          padding: 2rem;
+        }
+
+        .mv-icon-wrapper {
+          width: 70px;
+          height: 70px;
+        }
+
+        .mv-icon {
+          font-size: 2.2rem;
+        }
+
+        .mission-vision-card h3 {
+          font-size: 1.6rem;
+        }
+
+        .mission-vision-card p {
+          font-size: 1rem;
+        }
+
         .values-section {
           padding: 3rem 1.5rem;
         }
@@ -954,6 +1140,11 @@
       }
 
       @media (max-width: 1024px) and (min-width: 769px) {
+        .mission-vision-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
         .values-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -1019,7 +1210,7 @@
       <div class="story-image">
         <img
           src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=1000&fit=crop"
-          alt="OneTrack Express"
+          alt="Axis Arabia Logistics"
         />
       </div>
       <div class="story-content">
@@ -1043,6 +1234,51 @@
           consignments to large-scale logistics projects, we focus on
           efficiency, transparency, and cost-effectiveness at every step.
         </p>
+      </div>
+    </section>
+
+    <!-- MISSION & VISION SECTION -->
+    <section class="mission-vision-section">
+      <div class="mission-vision-container">
+        <div class="section-header">
+          <h2 style="color: white;">Our Mission & Vision</h2>
+          <p style="color: rgba(255, 255, 255, 0.8);">
+            Guiding our journey towards excellence in global logistics
+          </p>
+        </div>
+        <div class="mission-vision-grid">
+          <div class="mission-vision-card">
+            <div class="mv-icon-wrapper">
+              <div class="mv-icon">🎯</div>
+            </div>
+            <h3>Our Mission</h3>
+            <p>
+              To provide world-class logistics and freight forwarding solutions that empower businesses to grow, compete, and succeed in the global marketplace.
+            </p>
+            <ul>
+              <li>Deliver reliable, efficient, and cost-effective transportation services</li>
+              <li>Build long-term partnerships based on trust and transparency</li>
+              <li>Continuously innovate our processes to meet evolving customer needs</li>
+              <li>Maintain the highest standards of safety and quality in every operation</li>
+            </ul>
+          </div>
+
+          <div class="mission-vision-card">
+            <div class="mv-icon-wrapper">
+              <div class="mv-icon">🌟</div>
+            </div>
+            <h3>Our Vision</h3>
+            <p>
+              To be the most trusted and preferred logistics partner in the region, recognized for excellence, innovation, and commitment to customer success.
+            </p>
+            <ul>
+              <li>Expand our network to connect more markets across the globe</li>
+              <li>Lead the industry in sustainable and eco-friendly logistics practices</li>
+              <li>Leverage cutting-edge technology to enhance service delivery</li>
+              <li>Create value for our clients, partners, and communities we serve</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1112,7 +1348,7 @@
     <section class="team-section">
       <div class="section-header">
         <h2>Meet Our Leadership</h2>
-        <p>The experienced team driving OneTrack Express forward</p>
+        <p>The experienced team driving Axis Arabia Logistics forward</p>
       </div>
       <div class="team-grid">
         <div class="team-card">
@@ -1171,7 +1407,7 @@
       <div class="timeline-container">
         <div class="section-header">
           <h2>Our Journey</h2>
-          <p>Milestones that shaped OneTrack Express</p>
+          <p>Milestones that shaped Axis Arabia Logistics</p>
         </div>
         <div class="timeline-line"></div>
 
@@ -1181,8 +1417,8 @@
           <div class="timeline-content">
             <h3>The Beginning</h3>
             <p>
-              OneTrack Express was founded with a single truck and a vision to
-              revolutionize logistics in India.
+              Axis Arabia Logistics was founded with a single truck and a vision to
+              revolutionize logistics in Saudi Arabia.
             </p>
           </div>
         </div>
@@ -1193,7 +1429,7 @@
           <div class="timeline-content">
             <h3>National Expansion</h3>
             <p>
-              Expanded operations to cover all major cities across India with a
+              Expanded operations to cover all major cities across Saudi Arabia with a
               fleet of 100+ vehicles.
             </p>
           </div>
@@ -1205,7 +1441,7 @@
           <div class="timeline-content">
             <h3>Going Global</h3>
             <p>
-              Launched international shipping services, connecting India to
+              Launched international shipping services, connecting Saudi Arabia to
               markets across Asia and Middle East.
             </p>
           </div>
@@ -1242,7 +1478,7 @@
       <div class="cta-content">
         <h2>Ready to Work With Us?</h2>
         <p>
-          Join thousands of businesses that trust axis arabia logistics for
+          Join thousands of businesses that trust Axis Arabia Logistics for
           their logistics needs. Let's build a partnership that delivers
           results.
         </p>
@@ -1269,7 +1505,7 @@
               </div>
             </a>
             <p class="footer-description">
-              Axis arabia logistics has been delivering excellence in logistics
+              Axis Arabia Logistics has been delivering excellence in logistics
               for over 27 years. We connect businesses worldwide with reliable,
               efficient, and innovative transportation solutions.
             </p>
@@ -1337,8 +1573,8 @@
                 "
               ></i>
               <div class="footer-contact-text">
-                123 Logistics Avenue<br />
-                Mumbai, Maharashtra 400001
+                Zaituna center, Al Rehab Dist<br />
+                Jeddah 23343, KSA
               </div>
             </div>
             <div class="footer-contact-item">
@@ -1346,21 +1582,20 @@
                 class="fa-solid fa-envelope"
                 style="color: white; font-size: 18px; margin-right: 2px"
               ></i>
-              <div class="footer-contact-text">info@axisarabia.com</div>
+              <div class="footer-contact-text">www.axisarabia.sa</div>
             </div>
             <div class="footer-contact-item">
               <i
                 class="fa-solid fa-phone"
                 style="color: white; font-size: 18px; margin-right: 2px"
               ></i>
-              <div class="footer-contact-text">+91 656 786 534</div>
+              <div class="footer-contact-text">+966 53 261 6174</div>
             </div>
           </div>
         </div>
 
         <div class="footer-bottom">
           <p class="footer-copyright">© 2025 ChatJY. All rights reserved.</p>
-          
         </div>
       </div>
     </footer>
@@ -1376,28 +1611,28 @@
       });
 
       // Mobile navigation
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.nav-links');
-      const navItems = document.querySelectorAll('.nav-links a');
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+      const navItems = document.querySelectorAll(".nav-links a");
 
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
       });
 
       // Close menu when clicking on a link
-      navItems.forEach(item => {
-        item.addEventListener('click', () => {
-          hamburger.classList.remove('active');
-          navLinks.classList.remove('active');
+      navItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
         });
       });
 
       // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
+      document.addEventListener("click", (e) => {
         if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-          hamburger.classList.remove('active');
-          navLinks.classList.remove('active');
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
         }
       });
     </script>
